@@ -309,88 +309,60 @@ body, html {
   transform: translate(-50%, -50%) scale(1.1); /* full screen */
 }
 
-/* Desktop target: 1920x1080 and larger */
-@media (max-width: 1920px) and (max-height: 1080px) {
-  /* Global scale for large desktop */
-  :root {
-    --scale-factor: 1;
+/* Tablet breakpoint */
+@media (max-width: 1100px) and (min-width: 761px) {
+  #roleText { font-size: 2.2rem; }
+  #passionText { font-size: 1.2rem; width: 60%; }
+  #welcomeText { font-size: 10rem; }
+  #bottomLogo { width: 80px; }
+  #BlackBox { height: 12rem; }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 760px) {
+  /* Logo + nav shrink */
+  #logo { width: 9vw; top: 0.5rem; left: 0.5rem; }
+  #navBar { top: 0.5rem; right: 0.5rem; }
+  #navBar a { font-size: 4vw; }
+
+  /* Role + passion stack vertically */
+  #roleMask {
+    top: 20vh;
+    left: 5%;
+    height: 3rem;
+    width: 90%;
+  }
+  #roleText { font-size: 6vw; }
+
+  #passionMask {
+    top: 28vh;
+    left: 5%;
+    width: 90%;
+    height: auto;
+  }
+  #passionText { font-size: 4vw; line-height: 1.4; }
+
+  /* Welcome text centered */
+  #welcomeText {
+    font-size: 12vw;
+    margin-top: 2rem;
+    white-space: normal;
+    text-align: center;
   }
 
-  /* Loader / mask */
-  #maskBox { width: 140px; height: 48px; }
-  #loader { font-size: 1.25rem; }
-  #skipBtn { font-size: 1rem; }
+  /* Bottom logo above black box */
+  #bottomLogo {
+    bottom: 10vh;
+    width: 20vw;
+    transform: translateX(-50%) scale(1.2);
+  }
 
-  /* White transition box */
-  #whiteBox { width: 60vw; height: 70vh; }
-
-  /* Homepage / hero text */
-  #homepage { font-size: 5rem; }
-  #welcomeText { font-size: 17rem; line-height: 0.95; }
-
-  /* Logo and nav */
-  #logo { width: 48px; transform: scale(1.6); top: 1rem; left: 1rem; }
-  #navMask { right: -1.5rem; width: 2.5rem; height: 6.5rem; }
-  #navBar { right: 1.5rem; top: 0.5rem; }
-
-  /* Role / passion text */
-  #roleText { font-size: 3rem; }
-  #passionText { font-size: 1.5rem; }
-
-  /* Black box and hero canvas */
-  #BlackBox { width: 103.5%; height: 16.3rem; top: 72%; }
-  #heroCanvas { height: 255px; }
-
-  /* Fine spacing */
-  #textMask { margin-top: 10rem; }
-}
-
-/* Primary fallback: typical desktops and laptops (between 1200 and 1919px) */
-@media (min-width: 1200px) and (max-width: 1919px) {
-  :root { --scale-factor: 0.65; }
-
-  #maskBox { width: 120px; height: 40px; }
-  #loader { font-size: 1.1rem; }
-  #skipBtn { font-size: 0.95rem; }
-
-  #whiteBox { width: 72vw; height: 64vh; }
-
-  #homepage { font-size: 3.8rem; }
-  #welcomeText { font-size: 12.5rem; line-height: 0.98; }
-
-  #logo { width: 42px; transform: scale(1.45); }
-  #navMask { right: -1.3rem; width: 2.3rem; height: 6rem; }
-  #navBar { right: 1.2rem; }
-
-  #roleText { font-size: 2.4rem; }
-  #passionText { font-size: 1.25rem; }
-
-  #BlackBox { height: 14.5rem; top: 70%; }
-  #heroCanvas { height: 220px; }
-  #textMask { margin-top: 8.5rem; }
-}
-
-/* Small desktop / tablet fallback (<= 1199px) */
-@media (max-width: 1199px) {
-  :root { --scale-factor: 0.45; }
-
-  #maskBox { width: 100px; height: 36px; }
-  #loader { font-size: 1rem; }
-  #skipBtn { font-size: 0.85rem; }
-
-  #whiteBox { width: 86vw; height: 58vh; }
-
-  #homepage { font-size: 2.2rem; }
-  #welcomeText { font-size: 6.5rem; line-height: 1.02; white-space: normal; }
-
-  #logo { width: 36px; transform: scale(1.2); top: 0.8rem; left: 0.8rem; }
-  #navMask { right: -1rem; width: 2rem; height: 5.5rem; }
-  #navBar { right: 1rem; top: 0.6rem; }
-
-  #roleText { font-size: 1.8rem; }
-  #passionText { font-size: 1.05rem; }
-
-  #BlackBox { height: 12.5rem; top: 68%; }
-  #heroCanvas { height: 180px; }
-  #textMask { margin-top: 6.5rem; }
+  /* Black box anchored bottom */
+  #BlackBox {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    transform: translateX(-50%) translateY(100%);
+  }
 }

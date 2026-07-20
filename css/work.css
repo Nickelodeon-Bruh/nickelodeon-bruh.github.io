@@ -300,21 +300,139 @@ html {
   display: block;
 }
 
-/* Accessibility / small screens */
-@media (max-width: 1100px) {
-  .left-column { flex: 0 0 420px; }
-  .project-previews { margin-left: 220px; }
-  .big-preview { width: 520px; height: 320px; }
-  .project-previews .frame { width: 200px; height: 150px; }
-  .project-counter { left: 24px; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  /* layout */
+  .left-column { flex: 0 0 420px; padding-top: 32px; padding-bottom: 100px; }
+  .project-previews { margin-left: 220px; margin-top: 260px; gap: 16px; }
+  .project-previews .frame { width: 240px; height: 170px; border-radius: 8px; }
+
+  /* counter */
+  .project-counter {
+    left: 28px;
+    top: 40%;
+    font-size: 3rem;
+    height: 3.2rem;
+  }
+  .project-counter span { transition-duration: 0.9s; }
+
+  /* center nav */
+  .center-nav { top: 48%; left: 42%; }
+  .center-nav .project-nav li { font-size: 1.05rem; }
+
+  /* right column (smaller preview) */
+  .right-column { padding: 28px; }
+  .big-preview { width: 520px; height: 320px; border-radius: 10px; }
+  .big-preview video { transition: opacity .35s ease; }
+
+  /* description */
+  .project-description { width: 16rem; bottom: 44px; font-size: 0.95rem; }
 }
 
 @media (max-width: 760px) {
-  #workShowcase { flex-direction: column; }
-  .left-column { flex: 1 1 auto; width: 100%; padding: 20px; }
-  .right-column { position: static; width: 100%; padding: 20px; height: auto; align-items: center; }
-  .big-preview { width: 100%; height: 220px; }
-  .project-previews { margin-left: 0; margin-top: 20px; flex-direction: row; overflow-x: auto; gap: 12px; }
-  .project-previews .frame { width: 220px; height: 140px; flex: 0 0 auto; }
-  .project-counter { position: relative; left: auto; top: auto; transform: none; }
+  /* overall layout: stack and simplify */
+  #workShowcase { display: block; min-height: auto; }
+  .left-column {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 18px 16px 120px;
+  }
+
+  /* hide right column entirely on mobile */
+  .right-column { display: none !important; }
+
+  /* project previews become a horizontal scroller */
+  .project-previews {
+    margin-left: 0;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .project-previews .frame {
+    flex: 0 0 72vw;        /* responsive width for phones */
+    max-width: 320px;
+    height: calc(72vw * 0.66); /* maintain approx 3:2 ratio */
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    background: #111;
+    transform: none;       /* no animation on mobile */
+    transition: none;
+  }
+  .project-previews .frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* project counter becomes inline/static above previews */
+  .project-counter {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    margin: 0 0 8px 8px;
+    font-size: 2.4rem;
+    height: auto;
+    overflow: visible;
+  }
+  .project-counter span { transform: none; transition: none; }
+
+  /* center nav reposition to flow with content */
+  .center-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 18px 0;
+    text-align: left;
+  }
+  .center-nav .project-nav li {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 1rem;
+    opacity: 1;
+    padding-left: 0;
+  }
+  .nav-arrow { display: none; } /* hide arrow on small screens */
+
+  /* description becomes full width and pinned below previews */
+  .project-description {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 12px 0 28px;
+    text-align: left;
+    font-size: 1rem;
+    z-index: 5;
+  }
+
+  /* disable transitions/animations globally for mobile to avoid overlap */
+  .project-previews .frame,
+  .project-counter span,
+  .center-nav .project-nav li,
+  .project-description,
+  #navBar,
+  #logo {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* logo + nav sizing for touch targets */
+  #logo { width: 9vw; top: 0.6rem; left: 0.6rem; }
+  #navBar { top: 0.6rem; right: 0.6rem; }
+  #navBar a { font-size: 4.2vw; }
+
+  /* accessibility: increase tap area for frames */
+  .project-previews .frame { padding: 6px; box-sizing: border-box; }
+
+  /* ensure smooth horizontal scroll but no vertical overflow */
+  html, body { overflow-x: hidden; }
 }
