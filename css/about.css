@@ -104,6 +104,12 @@ body, html {
   padding-top: 5rem;
 }
 
+#bioContainer h1,
+#backgroundContainer h1,
+#educationContainer h1 {
+  margin-top: 12rem ;
+}
+
 /* Headings inside About section */
 #bioContainer h1,
 #backgroundContainer h1,
@@ -135,7 +141,7 @@ body, html {
   background: #242322;
   opacity: 0.5;
   margin: 0 2rem;
-  margin-top: 5rem;
+  margin-top: 17rem;
 }
 
 /* Reveal animation */
@@ -174,7 +180,7 @@ body, html {
 #hobbies {
   height: 100vh;                        
   padding: 0;                          
-  background-image: url("/img/background-about.webp");
+  background-image: url("/img/hobbies-background.webp");
   background-repeat: repeat-y;          
   background-size: 100% auto;      
   animation: driftUp 40s linear infinite;
