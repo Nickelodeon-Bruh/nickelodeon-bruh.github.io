@@ -1,79 +1,19 @@
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelight_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelightitalic_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueroman_1.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuemedium_1.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaNeueBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueitalic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Satoshi-Variable';
-  src: url('../fonts/satoshi-variable_1.woff2') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Satoshi-Bold';
-  src: url('/fonts/satoshi-bold_1.woff2') format('woff2');
-  font-weight: bold;
-  font-display: swap;
-  font-style: normal;
-}
-
 /* Base */
-* { box-sizing: border-box; }
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', 'Satoshi-Variable', Arial, sans-serif;
+  font-family: 'HelveticaNeue', 'Satoshi-variable', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #fff;
+  user-select: none;
 }
-a { color: inherit; text-decoration: none; }
+
+a { 
+  color: inherit; 
+  text-decoration: none; 
+}
 
 /* Logo + top nav */
 #logo {
@@ -90,7 +30,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 20;
 }
 #navBar ul { list-style: none; margin: 0; padding: 0; }
-#navBar li { margin: 0.3rem 0; }
+#navBar li { margin: 0.3rem 0; line-height: 1.2rem; }
 #navBar a {
   font-weight: 900;
   font-size: 1rem;
@@ -200,7 +140,7 @@ html {
 }
 .center-nav .project-nav { list-style: none; margin: 0; padding: 0; }
 .center-nav .project-nav li {
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-weight: 800;
   line-height: 0.8;
   margin: 10px 0;
@@ -378,6 +318,3 @@ html {
   .project-previews .frame { width: 220px; height: 140px; flex: 0 0 auto; }
   .project-counter { position: relative; left: auto; top: auto; transform: none; }
 }
-
-/* Hide scrollbar for webkit */
-::-webkit-scrollbar { display: none; }

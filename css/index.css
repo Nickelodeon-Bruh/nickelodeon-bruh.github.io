@@ -4,69 +4,11 @@ body, html {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  font-family: 'Helvetica Neue', 'Satoshi-Variable', Arial, sans-serif;
+  font-family: 'HelveticaNeue', 'Satoshi-variable', Arial, sans-serif;
   background: #000;
   color: #fff;
   user-select: none;
 }
-
-/* Helvetica Neue font imports */
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelight_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelightitalic_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueroman_1.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuemedium_1.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueitalic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Satoshi-Variable';
-  src: url('../fonts/satoshi-variable_1.woff2') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: normal;
-}
-
 
 /* Counter mask box */
 #maskBox {
@@ -213,7 +155,7 @@ body, html {
 
 #navBar a {
   text-decoration: none;
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-size: 1rem;
   font-weight: 900;
   color: #000;
@@ -446,8 +388,4 @@ body, html {
   #BlackBox { height: 12.5rem; top: 68%; }
   #heroCanvas { height: 180px; }
   #textMask { margin-top: 6.5rem; }
-}
-
-::-webkit-scrollbar {
-  display: none;
 }

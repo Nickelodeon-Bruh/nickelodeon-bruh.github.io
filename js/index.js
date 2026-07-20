@@ -136,7 +136,7 @@ const PETAL_LAG_STRENGTH_RANGE = [0.09, 0.17];
 const PETAL_LAG_DAMPING_RANGE  = [0.60, 0.72];
 
 const svgLoader = new SVGLoader();
-svgLoader.load('/images/black.svg', (data) => {
+svgLoader.load('/img/black.svg', (data) => {
   flowerGroup = new THREE.Group();
   data.paths.forEach(path => {
     const shapes = SVGLoader.createShapes(path);

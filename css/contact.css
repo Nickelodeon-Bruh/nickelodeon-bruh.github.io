@@ -1,72 +1,8 @@
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelight_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuelightitalic_1.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueroman_1.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneuemedium_1.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/HelveticaNeueBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('/fonts/helveticaneueitalic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Satoshi-Variable';
-  src: url('/fonts/satoshi-variable_1.woff2') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-    font-family: 'Satoshi-Bold';
-    src: url('/fonts/satoshi-bold_1.woff2') format('woff2');
-    font-weight: 300 900;
-    font-display: swap;
-    font-style: bold;
-}
-
 /* Base styles */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', 'Satoshi-Variable', Arial, sans-serif;
+  font-family: 'HelveticaNeue', 'Satoshi-variable', Arial, sans-serif;
   user-select: none;
   scroll-behavior: smooth;
   background: #fff;
@@ -107,7 +43,7 @@ body, html {
 #navBar li { margin: 0.3rem 0; line-height: 1.2; }
 #navBar a {
   text-decoration: none;
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-size: 1rem;
   font-weight: 900;
   color: #000;
@@ -157,7 +93,7 @@ body, html {
   overflow-x: hidden;     /* prevent scrollbars */
   background: transparent; /* let the petal-bg animation show through */
   color: #000;
-  font-family: "Helvetica Neue", "Satoshi-Variable", sans-serif;
+  font-family: "HelveticaNeue", "Satoshi-variable", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -187,13 +123,13 @@ body, html {
 }
 
 .contact-intro h2 {
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-size: 6rem !important;
   font-weight: 900;
   margin-bottom: 1rem;
 }
 .contact-intro p {
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-size: 1.2rem !important;
   font-weight: 500;
   line-height: 1.6;
@@ -213,7 +149,7 @@ body, html {
 }
 
 .contact-form label {
-  font-family: 'Satoshi-Variable', sans-serif;
+  font-family: 'Satoshi-variable', sans-serif;
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
@@ -223,7 +159,7 @@ body, html {
   border: none;
   border-bottom: 2px solid #ccc;
   background: transparent;
-  font-family: 'Helvetica Neue', Arial;
+  font-family: 'HelveticaNeue', Arial;
   padding: 0.6rem 0;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -273,7 +209,7 @@ body, html {
 }
 
 button[type="submit"] {
-  font-family: "Satoshi-Bold", sans-serif; 
+  font-family: "Satoshi-bold", sans-serif; 
   font-size: 1rem;                  
   font-weight: 700;                   
 }
@@ -292,7 +228,7 @@ button[type="submit"] {
 .social-links a {
   color: #000;
   text-decoration: none;
-  font-family: 'Satoshi-Bold', Arial, sans-serif;
+  font-family: 'Satoshi-bold', Arial, sans-serif;
   font-weight: 800;
 }
 
@@ -305,7 +241,7 @@ button[type="submit"] {
   width: auto;
   height: 1rem;             
   bottom: 0.5rem;
-  font-family: 'Satoshi-Bold';           
+  font-family: 'Satoshi-bold';           
   left: 3%;
   display: flex;           /* enable flexbox */
   flex-direction: row;     /* horizontal layout */
