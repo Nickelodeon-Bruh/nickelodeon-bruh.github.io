@@ -118,8 +118,8 @@ updateWeather();
 setInterval(updateWeather, 400000);
 
 // petal-bg.js
-import * as THREE from './three.module.js';
-import { SVGLoader } from './SVGLoader.js';
+import * as THREE from './three-module.js';
+import { SVGLoader } from './svg-loader.js';
 
 (async function initPetalBackground() {
   try {
