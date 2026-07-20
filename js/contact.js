@@ -117,33 +117,37 @@ async function updateWeather() {
 updateWeather();
 setInterval(updateWeather, 400000);
 
-// Three.js petal background below
+// petal-bg.js
+import * as THREE from './three.module.js';
+import { SVGLoader } from './SVGLoader.js';
+
 (async function initPetalBackground() {
   try {
-    const [THREE, { SVGLoader }] = await Promise.all([
-      import('three'),
-      import('three/examples/jsm/loaders/SVGLoader.js'),
-    ]);
-
     const container = document.getElementById('petal-bg');
     if (!container) return;
 
+    // Scene, camera, renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     container.appendChild(renderer.domElement);
 
+    // Lights
     scene.add(new THREE.AmbientLight(0xffffff, 0.7));
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dirLight.position.set(5, 10, 5);
     scene.add(dirLight);
 
+    // Loaders and helpers
     const loader = new SVGLoader();
-    const petals = [];
+    const textureLoader = new THREE.TextureLoader();
 
+    // Petal system parameters
+    const petals = [];
     const NUM_PETALS = 48;
     const FIELD_WIDTH = 12;
     const FIELD_DEPTH = 3;
@@ -159,6 +163,7 @@ setInterval(updateWeather, 400000);
     const WRAP_RIGHT = FIELD_WIDTH / 2 + WRAP_MARGIN;
     const WRAP_RANGE = WRAP_RIGHT - WRAP_LEFT;
 
+    // Wind / gust system
     const gust = { active: false, start: 0, attack: 0, hold: 0, release: 0, peak: 0 };
     const GUST_CHANCE_PER_SECOND = 0.35;
     let windClockTime = 0;
@@ -198,6 +203,7 @@ setInterval(updateWeather, 400000);
     let windDistance = 0;
     let currentWind = 0;
 
+    // Petal motion parameters generator
     function makeFallParams() {
       return {
         fallSpeed: 0.006 + Math.random() * 0.010,
@@ -213,6 +219,7 @@ setInterval(updateWeather, 400000);
       };
     }
 
+    // Reset a petal to top with new params
     function resetPetal(p) {
       Object.assign(p, makeFallParams());
       const type = pickType();
@@ -227,15 +234,17 @@ setInterval(updateWeather, 400000);
     const clock = new THREE.Clock();
     let lastT = 0;
 
+    // Files to load (adjust paths if needed)
     const PETAL_FILES = [
-      '/images/flower-1.svg',
-      '/images/flower-2.svg',
-      '/images/flower-3.svg',
-      '/images/flower-4.svg',
-      '/images/flower-5.svg',
-      '/images/flower-6.svg',
+      '/img/flower-1.svg',
+      '/img/flower-2.svg',
+      '/img/flower-3.svg',
+      '/img/flower-4.svg',
+      '/img/flower-5.svg',
+      '/img/flower-6.svg',
     ];
 
+    // Materials for vector petals
     const svgColor = new THREE.Color(0x000000);
     const materialFill = new THREE.MeshBasicMaterial({
       color: svgColor,
@@ -243,12 +252,14 @@ setInterval(updateWeather, 400000);
     });
     const materialOutline = new THREE.LineBasicMaterial({ color: svgColor });
 
+    // Easter egg image files (optional)
     const EASTER_EGG_FILES = [
-      { file: '/images/nik.jpg', scaleRange: [2, 5] },
-      { file: '/images/carlos.png', scaleRange: [2, 5] },
+      { file: '/img/nik.jpg', scaleRange: [2, 5] },
+      { file: '/img/carlos.png', scaleRange: [2, 5] },
     ];
     const EASTER_EGG_CHANCE = 0.015;
 
+    // Build a type from SVG loader data
     function buildType(data, isEgg) {
       const allShapes = [];
       data.paths.forEach(path => {
@@ -265,10 +276,11 @@ setInterval(updateWeather, 400000);
       return { allShapes, tempGeom, centerX, centerY, scaleFit, isEgg, scaleRange: [1, 1] };
     }
 
+    // Build mesh group for a petal type
     function buildPetalMesh(group, type) {
       while (group.children.length) {
         const child = group.children.pop();
-        child.geometry.dispose();
+        if (child.geometry) child.geometry.dispose();
         group.remove(child);
       }
 
@@ -297,8 +309,7 @@ setInterval(updateWeather, 400000);
       });
     }
 
-    const textureLoader = new THREE.TextureLoader();
-
+    // Build image-based type from loaded texture
     function buildImageType(texture, scaleRange) {
       if ('colorSpace' in texture) texture.colorSpace = THREE.SRGBColorSpace;
       const img = texture.image;
@@ -315,6 +326,7 @@ setInterval(updateWeather, 400000);
       };
     }
 
+    // Load an egg entry (svg or image)
     function loadEggFile(entry) {
       const ext = entry.file.split('.').pop().toLowerCase();
       const scaleRange = entry.scaleRange ?? [1, 1];
@@ -343,6 +355,7 @@ setInterval(updateWeather, 400000);
       return min === max ? min : min + Math.random() * (max - min);
     }
 
+    // Load petals and eggs
     const petalLoad = Promise.all(
       PETAL_FILES.map(file => loader.loadAsync(file).catch(() => null))
     );
@@ -359,12 +372,14 @@ setInterval(updateWeather, 400000);
         return;
       }
 
+      // Shuffle lane indices
       const laneIndices = Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => i);
       for (let i = laneIndices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [laneIndices[i], laneIndices[j]] = [laneIndices[j], laneIndices[i]];
       }
 
+      // Create petal groups
       for (let i = 0; i < NUM_PETALS; i++) {
         const type = pickType();
         const group = new THREE.Group();
@@ -392,6 +407,7 @@ setInterval(updateWeather, 400000);
       }
     });
 
+    // Animation loop
     function animate() {
       requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
@@ -430,6 +446,7 @@ setInterval(updateWeather, 400000);
     }
     animate();
 
+    // Resize handling
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
