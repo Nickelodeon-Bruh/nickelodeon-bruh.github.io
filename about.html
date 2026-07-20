@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nikhil Bhawan - About</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/about.css">
+  <a href="/index.html" class="BoxBtn">
+    <img id="logo" src="/images/png.png" alt="Logo">
+  </a>
+</head>
+<body>
+  <!-- Transition layers -->
+  <div id="whiteBoxRight"></div>
+  <div id="blackBoxRight"></div>
+
+  <nav id="navBar">
+    <ul>
+      <li><a href="/work.html" class="BoxBtn">PROJECTS</a></li>
+      <li><a href="/about.html" class="active">ABOUT</a></li>
+      <li><a href="/contact.html" class="BoxBtn">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Horizontal About section -->
+  <section id="AboutMe">
+
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="/videos/tree-background-about.webm" type="video/mp4">
+    </video>
+
+    <div id="bioContainer" class="about-block">
+      <h1 class="reveal"><span>BIO</span></h1>
+      <p class="reveal"><span>20 y.o born in Suriname. A freelance developer</span></p>
+      <p class="reveal"><span>passionate about creating interactive web</span></p>
+      <p class="reveal"><span>experiences and game mechanics. I enjoy</span></p>
+      <p class="reveal"><span>blending creativity with technical problem-solving.</span></p>
+    </div>
+
+    <div id="spacer"></div>
+
+    <div id="backgroundContainer" class="about-block">
+      <h1 class="reveal"><span>Background</span></h1>
+      <p class="reveal"><span>My first exposure to HTML came when I tried to</span></p>
+      <p class="reveal"><span>“hack” Roblox by changing values in the inspect</span></p>
+      <p class="reveal"><span>tool, only to realize it was just a visual trick. That</span></p>
+      <p class="reveal"><span>curiosity led me to explore how websites are built,</span></p>
+      <p class="reveal"><span>and soon I was learning HTML, CSS, and JavaScript</span></p>
+      <p class="reveal"><span>with friends. More recently, I’ve experimented with</span></p>
+      <p class="reveal"><span>C# and Unity while helping a friend in game</span></p>
+      <p class="reveal"><span>development, which deepened my interest in</span></p>
+      <p class="reveal"><span>programming and web development.</span></p>
+    </div>
+    
+    <div id="spacer2"></div>
+
+    <div id="educationContainer" class="about-block">
+      <h1 class="reveal"><span>Education</span></h1>
+      <p class="reveal"><span>I am currently pursuing a Bachelor's degree in</span></p>
+      <p class="reveal"><span>Software Engineering at University of Applied </span></p>
+      <p class="reveal"><span>Sciences and Technology Suriname. My</span></p>
+      <p class="reveal"><span>coursework has provided me with a solid</span></p>
+      <p class="reveal"><span>foundation in programming, algorithms, and</span></p>
+      <p class="reveal"><span>software design principles.</span></p>
+    </div>
+  </section>
+
+  <!-- Scroll indicator -->
+  <a id="scrollIndicator" href="#hobbies">↓ Please Scroll</a>
+
+    <!-- Hobbies section -->
+  <section id="hobbies">
+    <div class="hobby-row">
+      <!-- Gaming slideshow (left) -->
+      <div class="hobby slideshow gaming">
+        <div class="slides">
+          <img src="/images/hobbies/game-1.jpg" alt="Gaming 1" loading="eager">
+          <img src="/images/hobbies/game-2.jpeg" alt="Gaming 2" loading="lazy">
+          <img src="/images/hobbies/game-3.jpg" alt="Gaming 3" loading="lazy">
+          <img src="/images/hobbies/game-4.jpeg" alt="Gaming 4" loading="lazy">
+          <img src="/images/hobbies/game-5.jpeg" alt="Gaming 5" loading="lazy">
+          <img src="/images/hobbies/game-6.png" alt="Gaming 6" loading="lazy">
+          <img src="/images/hobbies/game-7.jpg" alt="Gaming 7" loading="lazy">
+        </div>
+        <!-- Gaming icon -->
+        <div class="icon">
+          <img src="/images/xbox-controller.png" alt="Gaming Icon">
+        </div>
+      </div>
+
+        <!-- Astro slideshow (center, larger 3:4 box) -->
+        <div class="hobby slideshow astro">
+          <div class="slides">
+            <img src="/images/hobbies/astro-1.jpg" alt="Astro 1" loading="eager">
+            <img src="/images/hobbies/astro-2.jpg" alt="Astro 2" loading="lazy">
+            <img src="/images/hobbies/astro-3.jpg" alt="Astro 3" loading="lazy">
+            <img src="/images/hobbies/astro-4.jpg" alt="Astro 4" loading="lazy">
+            <img src="/images/hobbies/astro-5.jpg" alt="Astro 5" loading="lazy">
+            <!-- ...rest of astro images, all with loading="lazy" ... -->
+            <img src="/images/hobbies/astro-19.jpg" alt="Astro 19" loading="lazy">
+          </div>
+          <!-- Astro icon -->
+          <div class="icon">
+            <img src="/images/night-photo.svg" alt="Astro Icon">
+          </div>
+        </div>
+
+        <!-- Music slideshow (right) -->
+        <div class="hobby slideshow music">
+          <div class="slides">
+            <img src="/images/hobbies/music-1.jpg" alt="Album 1" loading="eager">
+            <img src="/images/hobbies/music-2.jpg" alt="Album 2" loading="lazy">
+            <img src="/images/hobbies/music-3.jpg" alt="Album 3" loading="lazy">
+            <!-- ...rest of music images, all with loading="lazy" ... -->
+            <img src="/images/hobbies/music-33.jpg" alt="Album 33" loading="lazy">
+          </div>
+          <!-- Music icon -->
+          <div class="icon">
+            <img src="/images/spoitfy-icon.png" alt="Music Icon">
+          </div>
+        </div>
+      </div>
+
+      <a href="https://youtu.be/dQw4w9WgXcQ?si=WqB5LQg-8R2UOOsV" target="_blank" id="youtubeLink">
+        <img src="/images/Solid.jpg" alt="Watch on YouTube">
+      </a>
+  </section>
+
+    <!-- Preload first images for instant display -->
+    <link rel="preload" as="image" href="/images/hobbies/game-1.jpg">
+    <link rel="preload" as="image" href="/images/hobbies/astro-1.jpg">
+    <link rel="preload" as="image" href="/images/hobbies/music-1.jpg">
+
+
+        <!-- Goals section -->
+    <section id="goals">
+      <div id="goalsContainer" class="about-block">
+        <h1 class="reveal"><span>Goals</span></h1>
+        <p class="reveal"><span>My short-term goal is to strengthen my skills in modern web frameworks</span></p>
+        <p class="reveal"><span>and security practices, building projects that challenge me creatively</span></p>
+        <p class="reveal"><span>and technically. Long-term, I aim to contribute to impactful software</span></p>
+        <p class="reveal"><span>solutions that improve people’s lives and inspire others to explore</span></p>
+        <p class="reveal"><span>technology with curiosity and creativity.</span></p>
+        
+        <div class="skill-logos">
+          <img src="/images/logos/html-logo.svg" alt="HTML">
+          <img src="/images/logos/css-logo.svg" alt="CSS">
+          <img src="/images/logos/javascript-logo.svg" alt="JavaScript">
+          <img src="/images/logos/C+-logo.svg" alt="C++">
+          <img src="/images/logos/csharp-logo.png" alt="C#">
+          <img src="/images/logos/typescript-logo.svg" alt="Typescript">
+          <img src="/images/logos/lua-logo.webp" alt="Lua">
+          <img src="/images/logos/mysql-logo.svg" alt="MySQL">
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com/Nickelodeon-Bruh" target="_blank">GitHub</a>
+        <a href="https://www.instagram.com/n1khelodeon/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/nikhilishan.nikhilishan.9" target="_blank">Facebook</a>
+        <a href="https://www.linkedin.com/in/nikhil-bhawan-993595423/" target="_blank">Linkedin</a>
+      </div>
+
+      <div class="location-widget">
+        <p id="city">Paramaribo, Suriname</p>
+        <p id="temperature">-- °C</p>
+        <p id="localtime">--:--</p>
+      </div>
+    </section>
+
+  <div id="blackBoxFill"></div>
+
+  <script src="/js/about.js"></script>
+</body>
+</html>

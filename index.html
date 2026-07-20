@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nikhil Bhawan</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/index.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.181.0/build/three.module.js",
+      "three/examples/jsm/loaders/SVGLoader.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/loaders/SVGLoader.js",
+      "three/examples/jsm/postprocessing/EffectComposer.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/postprocessing/EffectComposer.js",
+      "three/examples/jsm/postprocessing/RenderPass.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/postprocessing/RenderPass.js",
+      "three/examples/jsm/postprocessing/ShaderPass.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/postprocessing/ShaderPass.js",
+      "three/examples/jsm/postprocessing/UnrealBloomPass.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "three/examples/jsm/shaders/FXAAShader.js": "https://cdn.jsdelivr.net/npm/three@0.181.0/examples/jsm/shaders/FXAAShader.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Counter -->
+  <div id="maskBox">
+    <div id="loader">0</div>
+    <div id="skipBtn">Click to skip</div>
+  </div>
+
+  <!-- White transition box -->
+  <div id="whiteBox"></div>
+
+  <!-- Homepage -->
+  <div id="homepage">
+    <a href="/index.html">
+      <image id="logo" src="/images/png.png" alt="Logo"></image>
+    </a>
+
+    <!-- Role text with mask -->
+    <div id="roleMask">
+      <div id="roleText">Software Engineering Student</div>
+    </div>
+
+    
+    <div id="navMask"></div>
+    <nav id="navBar">
+      <ul>
+        <li><a href="/work.html" class="BoxBtn">PROJECTS</a></li>
+        <li><a href="/about.html" class="BoxBtn">ABOUT</a></li>
+        <li><a href="/contact.html" class="BoxBtn">CONTACT</a></li>
+      </ul>
+    </nav>
+    
+    <div id="passionMask">
+      <div id="passionText">
+        I'm passionate about technology and computer hardware, always curious about how things work and how they can be improved. Just as much, I value listening to people and understanding their perspectives — because great solutions start with empathy.
+      </div>
+    </div>
+
+    <!-- Centered name with mask -->
+    <div id="textMask">
+      <h1 id="welcomeText">Nikhil Bhawan</h1>
+    </div>
+
+    <div id="BlackBox"></div>
+
+    <canvas id="heroCanvas"></canvas>
+  </div>
+
+  <div id="blackBoxRight"></div>
+
+
+  <script type="module" src="/js/index.js"></script>
+</body>
+</html>

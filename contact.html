@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nikhil Bhawan - Contact</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/contact.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/examples/jsm/loaders/SVGLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/SVGLoader.js"
+    }
+  }
+  </script>
+  <a href="/index.html" class="BoxBtn">
+    <img id="logo" src="/images/png.png" alt="Logo">
+  </a>
+</head>
+<body>
+    <!-- Sakura petal animation -->
+    <div id="petal-bg"></div>
+
+    <nav id="navBar">
+    <ul>
+      <li><a href="/work.html" class="BoxBtn">PROJECTS</a></li>
+      <li><a href="/about.html" class="BoxBtn">ABOUT</a></li>
+      <li><a href="/contact.html" class="active">CONTACT</a></li>
+    </ul>
+  </nav>
+
+    <section id="contact">
+        <!-- Transition layers -->
+        <div id="whiteBoxRight"></div>
+        <div id="blackBoxRight"></div>
+
+        <div class="contact-wrapper">
+            <!-- Left side -->
+            <div class="contact-intro">
+              <h2>Let’s create the future together.</h2>
+              <p>Whether it’s a small collaboration, a freelance gig, or just a quick chat,  
+              drop me a note. I’m always open to new opportunities and conversations.</p>
+            </div>
+
+            <!-- Right side -->
+            <div class="contact-form-container">
+            <form id="contactForm" action="https://formspree.io/f/mvzekdww" method="POST" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@domain.com" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="What’s it about?" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me a bit about the project, timeline, or anything useful." rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="social-links">
+      <a href="https://github.com/Nickelodeon-Bruh" target="_blank">GitHub</a>
+      <a href="https://www.instagram.com/n1khelodeon/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/nikhilishan.nikhilishan.9" target="_blank">Facebook</a>
+      <a href="https://www.linkedin.com/in/nikhil-bhawan-993595423/" target="_blank">Linkedin</a>
+    </div>
+
+    <div class="location-widget">
+      <p id="city">Paramaribo, Suriname</p>
+      <p id="temperature">-- °C</p>
+      <p id="localtime">--:--</p>
+    </div>
+
+    <div id="blackBoxFill"></div>
+
+<script src="/js/contact.js"></script>
+</body>

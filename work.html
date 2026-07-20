@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nikhil Bhawan - Projects</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon-96x96.png" />
+  <link rel="stylesheet" href="/css/work.css" />
+</head>
+<body>
+  <!-- Logo -->
+  <a href="/index.html" class="BoxBtn">
+    <img id="logo" src="/images/png.png" alt="Logo" />
+  </a>
+
+  <!-- Transition layers -->
+  <div id="whiteBoxRight"></div>
+  <div id="blackBoxRight"></div>
+
+  <!-- Top nav -->
+  <nav id="navBar">
+    <ul>
+      <li><a href="/work.html" class="active">PROJECTS</a></li>
+      <li><a href="/about.html" class="BoxBtn">ABOUT</a></li>
+      <li><a href="/contact.html" class="BoxBtn">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Work showcase -->
+  <section id="workShowcase">
+    <div class="left-column">
+      <!-- Project 1 -->
+      <div class="project-block" data-project="01">
+        <div class="project-counter"><span>01</span></div>
+        <div class="project-previews">
+          <div class="frame" id="project01" 
+               data-preview="/videos/bean-home.mp4" 
+               data-description="Bean Water website.">
+            <video src="/videos/bean-home.mp4" muted loop playsinline autoplay></video>
+          </div>
+          <div class="frame" 
+               data-preview="/videos/bean-coffee.mp4" 
+               data-description="Was for a assigment. Now making it into a full working website">
+            <video src="/videos/bean-coffee.mp4" muted loop playsinline autoplay></video>
+          </div>
+          <div class="frame" 
+               data-preview="/videos/bean-lat.mp4" 
+               data-description="In the works.">
+            <video src="/videos/bean-mach.mp4" muted loop playsinline autoplay></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-block" data-project="02">
+        <div class="project-counter"><span>02</span></div>
+        <div class="project-previews">
+          <div class="frame" id="project02" 
+               data-preview="/videos/milky.mp4.mp4" 
+               data-description="Milky Way Simulation.">
+            <video src="/videos/milk-show.mp4" muted loop playsinline autoplay></video>
+          </div>
+          <div class="frame" 
+               data-preview="/videos/project2-frame2.mp4" 
+               data-description="Coming Soon.">
+            <video src="/videos/project2-frame2.mp4" muted loop playsinline autoplay></video>
+          </div>
+          <div class="frame" 
+               data-preview="/videos/project2-frame3.mp4" 
+               data-description="Coming Soon.">
+            <video src="/videos/project2-frame3.mp4" muted loop playsinline autoplay></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: big preview + description -->
+    <div class="right-column">
+      <div class="big-preview">
+        <video class="big-video a" muted autoplay playsinline></video>
+        <video class="big-video b" muted autoplay playsinline></video>
+      </div>
+      <div class="project-description"><p></p></div>
+    </div>
+
+    <!-- Center nav -->
+    <div class="center-nav">
+      <span class="nav-arrow">></span>
+      <ul class="project-nav">
+        <li class="active"><a href="#project01">BEAN WATER</a></li>
+        <li><a href="#project02">LABS</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div id="blackBoxFill"></div>
+
+  <script src="/js/work.js"></script>
+</body>
+</html>
