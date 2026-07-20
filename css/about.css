@@ -43,8 +43,8 @@ body, html {
   width: 100%;
   height: 100%;
   background: #000;
-  z-index: 25;      /* above aboutPage */
-  transform: translate(-50%, -50%) scale(2); /* start covering full screen */
+  z-index: 25;     
+  transform: translate(-50%, -50%) scale(2); 
   transition: transform 1.2s ease;
 }
 /* Shrink state */
@@ -71,7 +71,7 @@ body, html {
   width: 100%;
   height: 100%;
   background: #fff;
-  z-index: 20;      /* between aboutPage and blackBox */
+  z-index: 20;     
   transform: translate(-50%, -50%) scaleY(2);
   transition: transform 2.5s ease;
 }
@@ -79,13 +79,13 @@ body, html {
 #whiteBoxRight.up     { transform: translate(-50%, -250%) scaleY(2); }
 
 #AboutMe {
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
   padding: 0;
   position: relative;
-  overflow: hidden; /* keep video contained */
+  overflow: hidden; 
 }
 
 /* Video background */
@@ -95,7 +95,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* fill section */
+  object-fit: cover;  
   z-index: 0;
 }
 
@@ -109,9 +109,9 @@ body, html {
 #backgroundContainer h1,
 #educationContainer h1 {
   font-family: 'Satoshi-variable', Arial, sans-serif;
-  font-weight: 800;          /* bold for emphasis */
-  font-size: 2rem;           /* larger than paragraphs */
-  color: #000;               /* darker for contrast */
+  font-weight: 800;         
+  font-size: 2rem;          
+  color: #000;               
   margin-bottom: 1rem;
 }
 
@@ -161,7 +161,7 @@ body, html {
   cursor: pointer;
   animation: bounce 1.5s infinite;
   z-index: 10;
-  transition: opacity 0.5s ease; /* smooth fade */
+  transition: opacity 0.5s ease; 
 }
 
 
@@ -172,9 +172,9 @@ body, html {
 
 /* Section background + animation */
 #hobbies {
-  height: 100vh;                        /* fill viewport height */
-  padding: 0;                           /* remove extra padding so it fits */
-  background-image: url("/images/background-about.webp");
+  height: 100vh;                        
+  padding: 0;                          
+  background-image: url("/img/background-about.webp");
   background-repeat: repeat-y;          
   background-size: 100% auto;      
   animation: driftUp 40s linear infinite;
@@ -182,8 +182,8 @@ body, html {
   position: relative;
 
   display: flex;
-  justify-content: center;              /* center horizontally */
-  align-items: center;                  /* center vertically */
+  justify-content: center;            
+  align-items: center;             
 }
 
 @keyframes driftUp {
@@ -196,17 +196,17 @@ body, html {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);          /* overlay for readability */
+  background: rgba(0,0,0,0.5);         
   z-index: 0;
 }
 
 /* Flex row layout */
 .hobby-row {
   display: flex;
-  justify-content: center;              /* center row horizontally */
-  align-items: center;                  /* align boxes vertically */
-  gap: 3rem;                            /* spacing between boxes */
-  z-index: 1;                           /* above background overlay */
+  justify-content: center;             
+  align-items: center;                 
+  gap: 3rem;                           
+  z-index: 1;                          
 }
 
 /* Hobby box styling */
@@ -223,12 +223,12 @@ body, html {
 .hobby.gaming,
 .hobby.music {
   width: 380px;
-  height: 380px;                        /* square */
+  height: 380px;                       
 }
 
 .hobby.astro {
   width: 480px;
-  height: 720px;                        /* taller 3:4 */
+  height: 720px;                        
 }
 
 /* Slideshow images */
@@ -334,7 +334,7 @@ body, html {
 
 .social-links {
   position: absolute;
-  bottom: -200%;
+  bottom: -199.5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;              
@@ -357,13 +357,13 @@ body, html {
   position: absolute;
   width: auto;
   height: 1rem;             
-  bottom: -199.8%;
+  bottom: -199.5%;
   font-family: 'Satoshi-bold';           
   left: 3%;
-  display: flex;           /* enable flexbox */
-  flex-direction: row;     /* horizontal layout */
-  align-items: center;     /* vertically center items */
-  gap: 12px;               /* spacing between items */
+  display: flex;           
+  flex-direction: row;     
+  align-items: center;     
+  gap: 12px;              
   font-size: 0.95rem;
   font-weight: 800;
   color: #242322;
@@ -379,15 +379,15 @@ body, html {
   height: 100vh;
   background: #000;
   z-index: 999;
-  display: none;                          /* hidden by default */
-  transform: translate(-50%, -30%) scale(0); /* start small */
+  display: none;                         
+  transform: translate(-50%, -30%) scale(0);
   transform-origin: center center;
   transition: transform 1.2s cubic-bezier(0.9, 0, 0.2, 1);
 }
 
 /* Expanded state */
 #blackBoxFill.expand {
-  transform: translate(-50%, -50%) scale(1.1); /* full screen */
+  transform: translate(-50%, -50%) scale(1.1); 
 }
 
 

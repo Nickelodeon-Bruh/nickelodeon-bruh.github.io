@@ -60,7 +60,7 @@ a {
 .project-block {
   position: relative;
   padding-left: 40px;
-  margin-bottom: 120px; /* spacing between projects */
+  margin-bottom: 120px; 
 }
 
 /* Counter mask + digit animation */
@@ -70,16 +70,16 @@ a {
   left: 40px;
   font-size: 3.5rem;
   font-weight: 900;
-  overflow: hidden;   /* mask effect */
-  height: 3.8rem;     /* mask height */
+  overflow: hidden;   
+  height: 3.8rem;   
   z-index: 5;
-  opacity: 1;         /* always visible */
-  transition: none;   /* JS controls transform */
+  opacity: 1;         
+  transition: none;  
 }
 
 .project-counter span {
   display: inline-block;
-  transform: translateY(-100%); /* start hidden above */
+  transform: translateY(-100%);
   transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -100,7 +100,7 @@ a {
 /* Frames column */
 .project-previews {
   margin-left: 280px;
-  margin-top: 370px;      /* pushes frames down so counter starts at top */
+  margin-top: 370px;      
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -122,7 +122,7 @@ a {
 }
 
 .frame {
-  scroll-margin-top: 420px; /* adjust to match your header/nav height */
+  scroll-margin-top: 420px; 
 }
 
 html {
@@ -153,17 +153,17 @@ html {
 
 .center-nav .project-nav li {
   position: relative;
-  padding-left: 1.5rem; /* space for arrow */
+  padding-left: 1.5rem; 
 }
 
 .nav-arrow {
   position: absolute;
   top: 0;
-  left: -10px;   /* same as your before-arrow */
+  left: -10px;   
   font-size: 24px;
   font-weight: bold;
   color: #242424;
-  transition: top 0.3s ease; /* smooth movement */
+  transition: top 0.3s ease; 
   opacity: 0;
 }
 
@@ -197,7 +197,7 @@ html {
   height: 450px;
   border-radius: 12px;
   overflow: hidden;
-  background: #000; /* fallback if no video */
+  background: #000; 
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 .big-preview video {
@@ -217,10 +217,10 @@ html {
 .frame video {
   padding: 5px;
   border-radius: 12px;
-  width: 100%;        /* fill the frame’s width */
-  height: 100%;       /* fill the frame’s height */
-  object-fit: cover;  /* crop edges if needed, keeps aspect ratio */
-  display: block;     /* removes inline spacing */
+  width: 100%;       
+  height: 100%;      
+  object-fit: cover;  
+  display: block;    
 }
 
 
@@ -352,14 +352,14 @@ html {
     -webkit-overflow-scrolling: touch;
   }
   .project-previews .frame {
-    flex: 0 0 72vw;        /* responsive width for phones */
+    flex: 0 0 72vw;        
     max-width: 320px;
-    height: calc(72vw * 0.66); /* maintain approx 3:2 ratio */
+    height: calc(72vw * 0.66); 
     width: auto;
     border-radius: 10px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     background: #111;
-    transform: none;       /* no animation on mobile */
+    transform: none;       
     transition: none;
   }
   .project-previews .frame video {
@@ -397,7 +397,7 @@ html {
     opacity: 1;
     padding-left: 0;
   }
-  .nav-arrow { display: none; } /* hide arrow on small screens */
+  .nav-arrow { display: none; } 
 
   /* description becomes full width and pinned below previews */
   .project-description {

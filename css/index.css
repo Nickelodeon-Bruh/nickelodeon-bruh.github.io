@@ -17,9 +17,9 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 120px;
-  height: 40px;          /* enough for counter + skip stacked */
+  height: 40px;          
   background: #000;
-  overflow: hidden;      /* clip children */
+  overflow: hidden;     
   z-index: 30;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ body, html {
 
 #loader,
 #skipBtn {
-  transform: translateY(205%);   /* start hidden below mask */
+  transform: translateY(205%);  
   transition: transform 0.8s ease;
 }
 
@@ -50,9 +50,9 @@ body, html {
 }
 
 #loader.pop,
-#skipBtn.pop { transform: translateY(0); }   /* slide up into view */
+#skipBtn.pop { transform: translateY(0); }   
 #loader.down,
-#skipBtn.down { transform: translateY(200%); } /* slide back down */
+#skipBtn.down { transform: translateY(200%); } 
 
 /* White transition box */
 #whiteBox {
@@ -112,11 +112,11 @@ body, html {
 #navMask {
   position: absolute;
   top: 1rem;
-  right: -1.5rem;              /* flush with right edge */
-  width: 2.5rem;           /* narrow vertical bar */
-  height: 6.5rem;          /* tall enough for links */
-  background: #fff;      /* white panel */
-  z-index: 20;           /* sits above navbar initially */
+  right: -1.5rem;             
+  width: 2.5rem;          
+  height: 6.5rem;         
+  background: #fff;     
+  z-index: 20;         
   transition: transform 0.8s ease;
 }
 
@@ -124,22 +124,22 @@ body, html {
 #navBar {
   position: absolute;
   top: 0.5rem;
-  right: 1.5rem;           /* place just left of mask */
-  transform: translateX(100%);   /* start hidden to the right */
+  right: 1.5rem;         
+  transform: translateX(100%);   
   opacity: 0;
   transition: transform 0.8s ease;
   z-index: 10;
 }
 
 #navBar.pop {
-  transform: translateX(0);  /* slide into place */
+  transform: translateX(0);  
   opacity: 1;
 }
 
 /* Animate mask sliding away to reveal navbar */
 #navMask.pop {
-  transform: translateX(100%);  /* slide mask off-screen */
-  opacity: 0;                   /* fade out */
+  transform: translateX(100%);  
+  opacity: 0;                
 }
 
 #navBar ul {
@@ -179,8 +179,8 @@ body, html {
   position: absolute;
   top: 30%;
   left: 2.5%;
-  height: 4rem;      /* matches roleText size */
-  overflow: hidden;  /* hides until it pops */
+  height: 4rem;      
+  overflow: hidden;  
 }
 
 /* Role text popping down from top */
@@ -192,20 +192,20 @@ body, html {
   -webkit-font-smoothing: antialiased;   
   -moz-osx-font-smoothing: grayscale;    
 
-  transform: translateY(-100%);   /* start hidden above mask */
-  transition: transform 0.8s ease; /* only slide, no fade */
+  transform: translateY(-100%);  
+  transition: transform 0.8s ease; 
 }
 #roleText.pop {
-  transform: translateY(0);       /* slide down into view */
+  transform: translateY(0);      
 }
 
 /* Passion mask on the right side */
 #passionMask {
   position: absolute;
-  top: 25%;          /* adjust vertical placement */
-  right: 9%;         /* pinned to the right */
-  width: 40%;        /* width of text block */
-  overflow: hidden;  /* hides until it pops */
+  top: 25%;          
+  right: 9%;       
+  width: 40%;      
+  overflow: hidden;  
 }
 
 /* Passion text popping down from top */
@@ -214,19 +214,19 @@ body, html {
   font-weight: 500;
   line-height: 1.6;
   color: #242322;
-  transform: translateY(-100%);   /* start hidden above */
+  transform: translateY(-100%);  
   transition: transform 0.8s ease;
 }
 #passionText.pop {
-  transform: translateY(0);       /* slide down into view */
+  transform: translateY(0);      
 }
 
 #textMask {
-  height: auto;               /* let it grow naturally */
+  height: auto;               
   display: flex;
-  flex-direction: column;     /* stack children vertically */
-  justify-content: center;    /* center horizontally */
-  align-items: center;        /* center horizontally */
+  flex-direction: column;     
+  justify-content: center;    
+  align-items: center;       
   margin-top: 10rem;
 }
 
@@ -247,37 +247,37 @@ body, html {
 
 #bottomLogo {
   position: absolute;
-  bottom: 3.5rem;          /* distance from bottom */
-  left: 50%;             /* center horizontally */
-  transform: translateX(-50%) scale(1.8); /* start bigger */
+  bottom: 3.5rem;         
+  left: 50%;            
+  transform: translateX(-50%) scale(1.8); 
   transform-origin: center bottom;
   transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0;            /* start hidden */
-  width: 110px;           /* adjust size */
+  opacity: 0;           
+  width: 110px;          
   height: auto;
   z-index: 99;
 }
 
 #bottomLogo.pop {
-  transform: translateX(-50%) scale(1); /* scale down to normal */
-  opacity: 1;                           /* fade in */
+  transform: translateX(-50%) scale(1); 
+  opacity: 1;                           
 }
 
 #BlackBox {
-  position: absolute;       /* independent placement */
-  top: 72%;                 /* adjust vertical position */
+  position: absolute;       
+  top: 72%;                
   left: 50%;
-  transform: translateX(-50%) translateY(100%); /* start hidden above */
+  transform: translateX(-50%) translateY(100%); 
   width: 103.5%;
   height: 16.3rem;
   background: #1A1A19;
-  z-index: 10;              /* make sure it’s visible above background */
+  z-index: 10;              
   opacity: 0;
   transition: transform 0.8s ease;
 }
 
 #BlackBox.pop {
-  transform: translateX(-50%) translateY(0); /* slide down into place */
+  transform: translateX(-50%) translateY(0); 
   opacity: 1;
   color: #1A1A19 ;
 }
@@ -293,14 +293,14 @@ body, html {
 /* Black transition box */
 #blackBoxRight {
   position: fixed;
-  top: 50%;              /* anchor around the vertical middle */
-  left: 50%;             /* anchor around the horizontal middle */
+  top: 50%;              
+  left: 50%;            
   width: 100vw;
   height: 100vh;
   background: #000;
   z-index: 999;
-  transform: translate(-50%, -30%) scale(0); /* start small, slightly under middle */
-  transform-origin: center center;           /* expand from its center */
+  transform: translate(-50%, -30%) scale(0); 
+  transform-origin: center center;           
   transition: transform 1.2s cubic-bezier(0.9, 0, 0.2, 1);
 }
 
