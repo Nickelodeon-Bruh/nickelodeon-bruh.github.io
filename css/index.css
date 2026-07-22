@@ -317,7 +317,6 @@ body, html {
 @media (max-width: 1100px) and (min-width: 761px) {
   #roleText { font-size: 2.2rem; }
   #passionText { font-size: 1.2rem; width: 60%; }
-  #welcomeText { font-size: 10rem; }
   #bottomLogo { width: 80px; }
   #BlackBox { height: 12rem; }
 }
