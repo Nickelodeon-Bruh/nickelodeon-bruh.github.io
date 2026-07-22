@@ -396,6 +396,9 @@ body, html {
   transform: translate(-50%, -50%) scale(1.1); 
 }
 
+@media (max-width: 1920px) and (min-width: 1080px) {
+  
+}
 
 /* Tablet breakpoint */
 @media (max-width: 1100px) and (min-width: 761px) {
