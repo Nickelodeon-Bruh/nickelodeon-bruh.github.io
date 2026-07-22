@@ -309,8 +309,8 @@ body, html {
   transform: translate(-50%, -50%) scale(1.1); /* full screen */
 }
 
-@media (max-width: 1920px) and (min-width: 1080px) {
-  
+@media (max-width: 1920px) and (max-height: 1080px) {
+
 }
 
 /* Tablet breakpoint */
