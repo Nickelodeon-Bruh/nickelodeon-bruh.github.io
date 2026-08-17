@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nikhil Bhawan - About</title>
   <link rel="icon" type="image/x-icon" href="/img/favicon-96x96.png">
   <link rel="stylesheet" href="/css/about.css">
@@ -73,17 +74,18 @@
 
     <!-- Hobbies section -->
   <section id="hobbies">
+    <div class="hobbies-bg"></div>
     <div class="hobby-row">
       <!-- Gaming slideshow (left) -->
       <div class="hobby slideshow gaming">
         <div class="slides">
-          <img src="/img/hobbies/game-1.jpg" alt="Gaming 1" loading="eager">
-          <img src="/img/hobbies/game-2.jpeg" alt="Gaming 2" loading="lazy">
-          <img src="/img/hobbies/game-3.jpg" alt="Gaming 3" loading="lazy">
-          <img src="/img/hobbies/game-4.jpeg" alt="Gaming 4" loading="lazy">
-          <img src="/img/hobbies/game-5.jpeg" alt="Gaming 5" loading="lazy">
-          <img src="/img/hobbies/game-6.png" alt="Gaming 6" loading="lazy">
-          <img src="/img/hobbies/game-7.jpg" alt="Gaming 7" loading="lazy">
+          <img src="/img/hobbies/game-1.jpg" alt="Gaming 1" loading="eager" decoding="async">
+          <img src="/img/hobbies/game-2.jpeg" alt="Gaming 2" loading="lazy" decoding="async">
+          <img src="/img/hobbies/game-3.jpg" alt="Gaming 3" loading="lazy" decoding="async">
+          <img src="/img/hobbies/game-4.jpeg" alt="Gaming 4" loading="lazy" decoding="async">
+          <img src="/img/hobbies/game-5.jpeg" alt="Gaming 5" loading="lazy" decoding="async">
+          <img src="/img/hobbies/game-6.png" alt="Gaming 6" loading="lazy" decoding="async">
+          <img src="/img/hobbies/game-7.jpg" alt="Gaming 7" loading="lazy" decoding="async">
         </div>
         <!-- Gaming icon -->
         <div class="icon">
@@ -94,13 +96,13 @@
         <!-- Astro slideshow (center, larger 3:4 box) -->
         <div class="hobby slideshow astro">
           <div class="slides">
-            <img src="/img/hobbies/astro-1.jpg" alt="Astro 1" loading="eager">
-            <img src="/img/hobbies/astro-2.jpg" alt="Astro 2" loading="lazy">
-            <img src="/img/hobbies/astro-3.jpg" alt="Astro 3" loading="lazy">
-            <img src="/img/hobbies/astro-4.jpg" alt="Astro 4" loading="lazy">
-            <img src="/img/hobbies/astro-5.jpg" alt="Astro 5" loading="lazy">
-            <!-- ...rest of astro img, all with loading="lazy" ... -->
-            <img src="/img/hobbies/astro-19.jpg" alt="Astro 19" loading="lazy">
+            <img src="/img/hobbies/astro-1.jpg" alt="Astro 1" loading="eager" decoding="async">
+            <img src="/img/hobbies/astro-2.jpg" alt="Astro 2" loading="lazy" decoding="async">
+            <img src="/img/hobbies/astro-3.jpg" alt="Astro 3" loading="lazy" decoding="async">
+            <img src="/img/hobbies/astro-4.jpg" alt="Astro 4" loading="lazy" decoding="async">
+            <img src="/img/hobbies/astro-5.jpg" alt="Astro 5" loading="lazy" decoding="async">
+            <!-- ...rest of astro img, all with loading="lazy" decoding="async" ... -->
+            <img src="/img/hobbies/astro-19.jpg" alt="Astro 19" loading="lazy" decoding="async">
           </div>
           <!-- Astro icon -->
           <div class="icon">
@@ -111,10 +113,10 @@
         <!-- Music slideshow (right) -->
         <div class="hobby slideshow music">
           <div class="slides">
-            <img src="/img/hobbies/music-1.jpg" alt="Album 1" loading="eager">
-            <img src="/img/hobbies/music-2.jpg" alt="Album 2" loading="lazy">
-            <img src="/img/hobbies/music-3.jpg" alt="Album 3" loading="lazy">
-            <img src="/img/hobbies/music-33.jpg" alt="Album 33" loading="lazy">
+            <img src="/img/hobbies/music-1.jpg" alt="Album 1" loading="eager" decoding="async">
+            <img src="/img/hobbies/music-2.jpg" alt="Album 2" loading="lazy" decoding="async">
+            <img src="/img/hobbies/music-3.jpg" alt="Album 3" loading="lazy" decoding="async">
+            <img src="/img/hobbies/music-33.jpg" alt="Album 33" loading="lazy" decoding="async">
           </div>
           <!-- Music icon -->
           <div class="icon">
@@ -131,6 +133,7 @@
     <!-- Preload first img for instant display -->
     <link rel="preload" as="image" href="/img/hobbies/game-1.jpg">
     <link rel="preload" as="image" href="/img/hobbies/astro-1.jpg">
+    <link rel="preload" as="image" href="/img/hobbies/astro-3.jpg">
     <link rel="preload" as="image" href="/img/hobbies/music-1.jpg">
 
 

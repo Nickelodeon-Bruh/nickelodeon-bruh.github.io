@@ -234,7 +234,7 @@ body, html {
 #welcomeText {
   font-size: 17rem;
   line-height: 1;
-  transform: translateY(100%);
+  transform: translateY(180%);
   opacity: 0;
   transition: transform 0.8s ease;
   color: #242322;
@@ -282,6 +282,19 @@ body, html {
   color: #1A1A19 ;
 }
 
+#heroCanvas {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 16rem;        /* matches #BlackBox height so the canvas sits flush in front of it */
+  display: block;
+  z-index: 15;           /* render above #BlackBox */
+  pointer-events: none;  /* purely decorative — let clicks pass through to the page */
+  background: transparent;
+}
+
 #blackToWhite stop {
   transition: stop-color 2s linear;
 }
@@ -315,23 +328,68 @@ body, html {
 
 /* Tablet breakpoint */
 @media (max-width: 1100px) and (min-width: 761px) {
-  #roleText { font-size: 2.2rem; }
-  #passionText { font-size: 1.2rem; width: 60%; }
-  #welcomeText { font-size: 8rem; }
-  #bottomLogo { width: 80px; }
-  #BlackBox { height: 12rem; }
+  /* Logo + nav */
+  #logo { width: 5vw; max-width: 48px; top: 1rem; left: 1rem; }
+  #navBar { top: 1rem; right: 1.5rem; }
+  #navBar a { font-size: 1.15rem; }
+
+  /* Role + passion stacked full-width (side-by-side doesn't fit at these widths) */
+  #roleMask {
+    top: 20vh;
+    left: 6%;
+    width: 88%;
+    height: 4.5rem;
+  }
+  #roleText { font-size: 3rem; }
+
+  #passionMask {
+    top: 30vh;
+    left: 6%;
+    right: auto;
+    width: 80%;
+    height: auto;
+  }
+  #passionText { font-size: 1.5rem; line-height: 1.5; width: 100%; }
+
+  /* Name: pinned to an explicit position instead of flex-centering,
+     so it can't drift into the text above on shorter tablet viewports */
+  #textMask {
+    position: absolute;
+    top: 45vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    width: 100%;
+  }
+  #welcomeText {
+    font-size: 7rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  #bottomLogo { width: 150px; bottom: 10rem; }
+
+  #BlackBox {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 37vh;
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  #heroCanvas { height: 37vh; }
 }
 
 /* Mobile breakpoint */
 @media (max-width: 760px) {
   /* Logo + nav shrink */
   #logo { width: 9vw; top: 0.5rem; left: 0.5rem; }
-  #navBar { top: 0.5rem; right: 0.5rem; }
+  #navBar { top: 0.5rem; right: 1.1rem; }
   #navBar a { font-size: 4vw; }
 
   /* Role + passion stack vertically */
   #roleMask {
-    top: 20vh;
+    top: 23vh;
     left: 5%;
     height: 3rem;
     width: 90%;
@@ -339,7 +397,7 @@ body, html {
   #roleText { font-size: 6vw; }
 
   #passionMask {
-    top: 28vh;
+    top: 33vh;
     left: 5%;
     width: 90%;
     height: auto;
@@ -348,7 +406,7 @@ body, html {
 
   /* Welcome text centered */
   #welcomeText {
-    font-size: 12vw;
+    font-size: 14vw;
     margin-top: 2rem;
     white-space: normal;
     text-align: center;
@@ -356,17 +414,26 @@ body, html {
 
   /* Bottom logo above black box */
   #bottomLogo {
-    bottom: 10vh;
-    width: 20vw;
+    bottom: 12vh;
+    width: 28vw;
     transform: translateX(-50%) scale(1.2);
   }
 
-  /* Black box anchored bottom */
+  /* #bottomLogo.pop (defined earlier in this file) otherwise wins over
+     the rule above once the reveal animation runs, snapping the flower
+     back down to scale(1) — redeclare it here so the mobile size sticks */
+  #bottomLogo.pop {
+    transform: translateX(-50%) scale(1);
+  }
+
+  /* Black box anchored bottom, pulled up closer under the name */
   #BlackBox {
     top: auto;
     bottom: 0;
-    width: 100%;
-    height: 20vh;
+    width: 110%;
+    height: 38vh;
     transform: translateX(-50%) translateY(100%);
   }
+
+  #heroCanvas { height: 38vh; }
 }

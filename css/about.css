@@ -1,4 +1,3 @@
-/* Base styles */
 body, html {
   margin: 0;
   padding: 0;
@@ -7,7 +6,6 @@ body, html {
   scroll-behavior: smooth;
 }
 
-/* Logo + nav */
 #logo {
   position: absolute;
   top: 1rem;
@@ -35,7 +33,6 @@ body, html {
 #navBar a:hover,
 #navBar a.active { color: #242322; opacity: 1; transition: opacity 0.5s; }
 
-/* Black transition box */
 #blackBoxRight {
   position: fixed;
   top: 0;
@@ -47,7 +44,6 @@ body, html {
   transform: translate(-50%, -50%) scale(2); 
   transition: transform 1.2s ease;
 }
-/* Shrink state */
 #blackBoxRight.shrink {
   top: 50%;
   left: 50%;
@@ -57,13 +53,11 @@ body, html {
   margin-bottom: 2px;
   box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.15);
 }
-/* Move up */
 #blackBoxRight.up {
   transform: translate(-50%, -250%) scaleY(1);
   transition: transform 1.5s ease-in-out;
 }
 
-/* White transition box */
 #whiteBoxRight {
   position: fixed;
   top: 50%;
@@ -88,7 +82,6 @@ body, html {
   overflow: hidden; 
 }
 
-/* Video background */
 #bgVideo {
   position: absolute;
   top: 0;
@@ -110,7 +103,6 @@ body, html {
   margin-top: 12rem ;
 }
 
-/* Headings inside About section */
 #bioContainer h1,
 #backgroundContainer h1,
 #educationContainer h1 {
@@ -121,7 +113,6 @@ body, html {
   margin-bottom: 1rem;
 }
 
-/* Paragraphs inside About section */
 #bioContainer p,
 #backgroundContainer p,
 #educationContainer p {
@@ -133,8 +124,6 @@ body, html {
   margin: 0.5rem 0;
 }
 
-
-/* Spacers as vertical dividers */
 #spacer, #spacer2 {
   height: 30rem;
   width: 0.5px;
@@ -144,7 +133,6 @@ body, html {
   margin-top: 17rem;
 }
 
-/* Reveal animation */
 .reveal { overflow: hidden; display: block; }
 .reveal span {
   display: inline-block;
@@ -170,31 +158,39 @@ body, html {
   transition: opacity 0.5s ease; 
 }
 
-
 @keyframes bounce {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(8px); }
 }
 
-/* Section background + animation */
 #hobbies {
   height: 100vh;                        
   padding: 0;                          
-  background-image: url("/img/hobbies-background.webp");
-  background-repeat: repeat-y;          
-  background-size: 100% auto;      
-  animation: driftUp 40s linear infinite;
   color: #fff;
   position: relative;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;            
   align-items: center;             
 }
 
+#hobbies .hobbies-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: calc(100% + 3840px + 100px);
+  background-image: url("/img/hobbies-background.webp");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  animation: driftUp 40s linear infinite;
+  will-change: transform;
+  z-index: 0;
+}
+
 @keyframes driftUp {
-  from { background-position: 0 0; }
-  to   { background-position: 0 -3840px; } 
+  from { transform: translateY(0); }
+  to   { transform: translateY(-3840px); }
 }
 
 #hobbies::before {
@@ -203,19 +199,17 @@ body, html {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.5);         
-  z-index: 0;
+  z-index: 1;
 }
 
-/* Flex row layout */
 .hobby-row {
   display: flex;
   justify-content: center;             
   align-items: center;                 
   gap: 3rem;                           
-  z-index: 1;                          
+  z-index: 2;                          
 }
 
-/* Hobby box styling */
 .hobby {
   overflow: hidden;
   border-radius: 16px;
@@ -225,7 +219,6 @@ body, html {
   align-items: center;
 }
 
-/* Fixed sizes */
 .hobby.gaming,
 .hobby.music {
   width: 380px;
@@ -237,7 +230,6 @@ body, html {
   height: 720px;                        
 }
 
-/* Slideshow images */
 .slides img {
   width: 100%;
   height: 100%;
@@ -246,6 +238,7 @@ body, html {
   top: 0; left: 0;
   opacity: 0;
   transition: opacity 1s ease;
+  will-change: opacity;
   z-index: 1;
 }
 
@@ -253,7 +246,6 @@ body, html {
   opacity: 1;
 }
 
-/* Icon overlay */
 .hobby .icon {
   position: absolute;
   top: 10px;
@@ -271,12 +263,12 @@ body, html {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  z-index: 2; /* above overlay */
+  z-index: 2;
   display: block;
 }
 
 #youtubeLink img {
-  width: 25px;   /* adjust size */
+  width: 25px;   
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -285,17 +277,17 @@ body, html {
 }
 
 #youtubeLink img:hover {
-  transform: scale(1.1); /* subtle hover zoom */
+  transform: scale(1.1); 
 }
 
 #goals {
   height: 100vh;
   display: flex;
   padding-left: 3rem;
-  justify-content: flex-start;   /* horizontal center */
-  align-items: center;       /* vertical center */
-  background: #fff;          /* or your background */
-  box-shadow: inset 0 10px 20px rgba(0,0,0,0.15); /* subtle shadow at top */
+  justify-content: flex-start;   
+  align-items: center;       
+  background: #fff;          
+  box-shadow: inset 0 10px 20px rgba(0,0,0,0.15); 
 }
 
 #goalsContainer {
@@ -306,12 +298,11 @@ body, html {
   padding-bottom: 12rem;
 }
 
-
 #goalsContainer h1 {
   font-family: 'Satoshi-variable', sans-serif;
-  font-weight: 800;          /* bold for emphasis */
-  font-size: 4.5rem;           /* larger than paragraphs */
-  color: #000;               /* darker for contrast */
+  font-weight: 800;          
+  font-size: 4.5rem;           
+  color: #000;               
   margin-bottom: 1rem;
 }
 
@@ -325,10 +316,10 @@ body, html {
 }
 
 .skill-logos {
-  display: flex;              /* horizontal row */
-  justify-content: flex-start;    /* center under text */
-  gap: 1rem;                  /* spacing between logos */
-  margin-top: 1.5rem;         /* space above logos */
+  display: flex;              
+  justify-content: flex-start;    
+  gap: 1rem;                  
+  margin-top: 1.5rem;         
 }
 
 .skill-logos img {
@@ -375,8 +366,6 @@ body, html {
   color: #242322;
 }
 
-
-/* Navigation transition box */
 #blackBoxFill {
   position: fixed;
   top: 50%;
@@ -391,7 +380,6 @@ body, html {
   transition: transform 1.2s cubic-bezier(0.9, 0, 0.2, 1);
 }
 
-/* Expanded state */
 #blackBoxFill.expand {
   transform: translate(-50%, -50%) scale(1.1); 
 }
@@ -400,69 +388,184 @@ body, html {
   
 }
 
-/* Tablet breakpoint */
 @media (max-width: 1100px) and (min-width: 761px) {
-  /* Example adjustments */
   #logo { width: 35px; }
   #navBar a { font-size: 0.9rem; }
 
+  #bioContainer h1,
+  #backgroundContainer h1,
+  #educationContainer h1 { font-size: clamp(1.3rem, 4vh, 2.2rem); margin-bottom: 0.6rem; }
+  #bioContainer p,
+  #backgroundContainer p,
+  #educationContainer p { font-size: clamp(0.8rem, 2vh, 1.2rem); line-height: 1.4; }
+
   #AboutMe {
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    height: auto;
-    padding: 2rem;
+    height: 96vh;
+    height: 96dvh;
+    overflow: hidden;
+    padding: 1.5rem;
   }
-  .about-block { max-width: 90%; }
+  .about-block { max-width: 90%; padding-top: 0; }
+  #bioContainer h1,
+  #backgroundContainer h1,
+  #educationContainer h1 { margin-top: 0; }
 
-  #hobbies .hobby {
-    width: 280px;
-    height: 280px;
+  #spacer, #spacer2 { display: none; }
+
+  #hobbies {
+    height: 96vh;
+    height: 96dvh;
+    overflow: hidden;
+    padding: 1.5rem 1rem;
   }
-  #goalsContainer h1 { font-size: 3rem; }
-  #goalsContainer p { font-size: 1.8rem; }
+  .hobby-row { flex-direction: column; gap: 1.5dvh; height: 100%; justify-content: center; }
+  .hobby.gaming,
+  .hobby.music {
+    width: min(40vw, 28dvh);
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+  .hobby.astro {
+    width: min(60vw, 28dvh);
+    aspect-ratio: 2 / 3;
+    height: auto;
+  }
+
+  #goals {
+    flex-direction: column;
+    justify-content: center;
+    height: 96vh;
+    height: 96dvh;
+    overflow: hidden;
+    padding: 1.5rem;
+    position: relative;
+  }
+  #goalsContainer {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  #goalsContainer h1 { font-size: clamp(2.2rem, 6.5vh, 3.6rem); }
+  #goalsContainer p { font-size: clamp(1.3rem, 3.8vh, 2rem); }
+  .skill-logos img { width: clamp(32px, 5vh, 44px); height: clamp(32px, 5vh, 44px); }
+
+  .social-links {
+    position: absolute;
+    bottom: 2.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+  }
+
+  .social-links { font-size: 1.2rem; gap: 2rem; }
+
+  .location-widget {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+  }
+
+  .location-widget { font-size: 1.1rem; }
+
+  #scrollIndicator { display: none; }
 }
 
-/* Mobile breakpoint */
 @media (max-width: 760px) {
-  /* Logo + nav shrink */
   #logo { width: 9vw; top: 0.5rem; left: 0.5rem; }
   #navBar { top: 0.5rem; right: 0.5rem; }
   #navBar a { font-size: 4vw; }
 
-  /* About section stacks vertically */
   #AboutMe {
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    height: auto;
-    padding: 2rem 1rem;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 1rem;
   }
-  .about-block { max-width: 100%; padding-top: 2rem; }
+  .about-block { max-width: 100%; padding-top: 0; }
   #bioContainer h1,
   #backgroundContainer h1,
-  #educationContainer h1 { font-size: 6vw; text-align: center; }
+  #educationContainer h1 { font-size: clamp(1.4rem, 4.5vh, 2rem); text-align: center; margin-bottom: 0.4rem; margin-top: 0; }
   #bioContainer p,
   #backgroundContainer p,
-  #educationContainer p { font-size: 4vw; text-align: center; }
+  #educationContainer p { font-size: clamp(0.9rem, 2.6vh, 1.1rem); text-align: center; margin: 0.3rem 0; line-height: 1.4; }
 
-  /* Hide spacers */
   #spacer, #spacer2 { display: none; }
 
-  /* Hobbies stack vertically */
-  #hobbies { flex-direction: column; gap: 2rem; height: auto; padding: 2rem 1rem; }
-  .hobby-row { flex-direction: column; gap: 2rem; }
-  .hobby { width: 80vw; aspect-ratio: 1 / 1; }
+  #hobbies {
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 1rem;
+  }
+  .hobby-row { flex-direction: column; gap: 1.2dvh; height: 100%; justify-content: center; }
+  .hobby.gaming,
+  .hobby.music {
+    width: min(52vw, 23dvh);
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+  .hobby.astro {
+    width: min(52vw, 27dvh);
+    aspect-ratio: 2 / 3;
+    height: auto;
+  }
 
-  /* Goals section */
-  #goals { flex-direction: column; padding: 2rem 1rem; height: auto; }
+  #youtubeLink { bottom: 4px; left: 4px; }
+  #youtubeLink img { width: 18px; }
+
+  #goals {
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+  }
   #goalsContainer { max-width: 100%; padding: 0; }
-  #goalsContainer h1 { font-size: 8vw; text-align: center; }
-  #goalsContainer p { font-size: 5vw; text-align: center; }
+  #goalsContainer h1 { font-size: clamp(1.9rem, 7.5vh, 2.8rem); text-align: center; }
+  #goalsContainer p { font-size: clamp(1.15rem, 4.2vh, 1.6rem); text-align: center; }
   .skill-logos { justify-content: center; flex-wrap: wrap; }
+  .skill-logos img { width: clamp(28px, 5vh, 36px); height: clamp(28px, 5vh, 36px); }
 
-  /* Social links + location widget inline */
-  .social-links { position: static; margin-top: 2rem; gap: 1.5rem; font-size: 4vw; }
-  .location-widget { position: static; margin-top: 1rem; font-size: 3.5vw; justify-content: center; }
+  .social-links {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    gap: 1.5rem;
+    font-size: 4vw;
+    justify-content: center;
+  }
+  .location-widget {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    height: auto;
+    width: max-content;
+    max-width: 92vw;
+    font-size: 0.9rem;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .location-widget p {
+    margin: 0;
+    white-space: nowrap;
+  }
 
-  /* Hide scroll indicator */
   #scrollIndicator { display: none; }
 }

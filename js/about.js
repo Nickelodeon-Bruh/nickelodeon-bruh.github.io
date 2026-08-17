@@ -32,6 +32,10 @@ window.addEventListener("load", () => {
       slides.forEach((img, j) => img.classList.toggle('active', j === i));
     }
     showSlide(current);
+    
+    slides.forEach(img => {
+      if (img.decode) img.decode().catch(() => {});
+    });
 
     let intervalTime = 4000;
     if (slideshow.classList.contains('astro')) intervalTime = 6200;
@@ -39,8 +43,16 @@ window.addEventListener("load", () => {
 
     // stagger start by index * 500ms
     setTimeout(() => {
-      setInterval(() => {
-        current = (current + 1) % slides.length;
+      setInterval(async () => {
+        const next = (current + 1) % slides.length;
+        const nextImg = slides[next];
+      
+        try {
+          if (nextImg.decode) await nextImg.decode();
+        } catch (e) {
+      
+        }
+        current = next;
         showSlide(current);
       }, intervalTime);
     }, index * 500);
@@ -78,7 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  window.addEventListener("scroll", revealOnScroll);
+  let revealTicking = false;
+  window.addEventListener("scroll", () => {
+    if (!revealTicking) {
+      revealTicking = true;
+      requestAnimationFrame(() => {
+        revealOnScroll();
+        revealTicking = false;
+      });
+    }
+  }, { passive: true });
   revealOnScroll();
 });
 
@@ -96,7 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  window.addEventListener("scroll", handleScroll);
+  let scrollIndicatorTicking = false;
+  window.addEventListener("scroll", () => {
+    if (!scrollIndicatorTicking) {
+      scrollIndicatorTicking = true;
+      requestAnimationFrame(() => {
+        handleScroll();
+        scrollIndicatorTicking = false;
+      });
+    }
+  }, { passive: true });
 });
 
 // --- Live clock ---

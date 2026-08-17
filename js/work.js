@@ -32,10 +32,32 @@ window.addEventListener("load", () => {
   });
 
   ensureBlockHeights();
+  computeCounterAnchor();
   initPreview();
-  updateOnScroll();
   updateCounters();
+  updateOnScroll();
 });
+
+// --- Measure the counter's anchor line directly from the DOM (mobile) ---
+// Frame 1 has extra margin before it that a flat CSS percentage doesn't
+// account for, so we measure its real position once instead of guessing.
+// rect.top + scrollY is scroll-invariant — it always yields frame 1's
+// distance from the top of the viewport as if the page were scrolled to
+// the very top, no matter when this runs. That's exactly the "top" value
+// a fixed-position counter needs to visually align with it, and it stays
+// correct even if this recomputes mid-scroll (e.g. on resize).
+// updateCounters() uses this same number as BOTH the counter's visual
+// "top" AND the trigger line for deciding which project is active — they
+// have to be the same value, or the handoff won't line up with what's
+// actually on screen.
+let counterAnchorPx = null;
+function computeCounterAnchor() {
+  if (window.innerWidth > 760) { counterAnchorPx = null; return; }
+  const firstFrame = document.querySelector('.project-block[data-project="01"] .frame');
+  if (!firstFrame) { counterAnchorPx = null; return; }
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+  counterAnchorPx = firstFrame.getBoundingClientRect().top + scrollY;
+}
 
 // --- Ensure each project-block spans its frames ---
 function ensureBlockHeights() {
@@ -102,45 +124,70 @@ function clearPreview() {
 
 // --- Counter slide logic ---
 function updateCounters() {
-  const blocks = document.querySelectorAll('.project-block');
-  const counterViewportY = window.innerHeight * 0.43;
-  const appearOffset = 150;
-  const disappearOffset = 150;
+  const isMobile = window.innerWidth <= 760;
+  // Mobile uses the measured anchor (frame 1's real position) so the
+  // counter actually lines up with it. Desktop keeps the simple 43%
+  // (no extra margin to account for there, so a fraction is fine).
+  const counterViewportY = (isMobile && counterAnchorPx != null)
+    ? counterAnchorPx
+    : window.innerHeight * 0.43;
+  const counterTopCss = (isMobile && counterAnchorPx != null)
+    ? counterAnchorPx + 'px'
+    : '43%';
 
-  blocks.forEach(block => {
-    const counter = block.querySelector('.project-counter');
-    const frames = block.querySelectorAll('.frame');
-    if (!frames.length) return;
-    const firstFrame = frames[0];
-    const lastFrame = frames[frames.length - 1];
-    const rectFirst = firstFrame.getBoundingClientRect();
-    const rectLast = lastFrame.getBoundingClientRect();
+  const blockData = Array.from(document.querySelectorAll('.project-block'))
+    .map(block => {
+      const frames = block.querySelectorAll('.frame');
+      return {
+        block,
+        counter: block.querySelector('.project-counter'),
+        firstFrame: frames[0],
+        lastFrame: frames[frames.length - 1]
+      };
+    })
+    .filter(d => d.firstFrame && d.lastFrame && d.counter);
 
-    counter.classList.remove('active','slideup');
+  blockData.forEach((data, i) => {
+    const { counter, lastFrame } = data;
+    counter.classList.remove('active', 'slideup');
 
-    if (block.dataset.project === '01') {
-      if (rectLast.bottom > counterViewportY + disappearOffset) {
-        counter.classList.add('active');
-        counter.style.position = 'fixed';
-        counter.style.top = '43%';
-      } else {
-        counter.classList.add('slideup');
-        counter.style.position = 'absolute';
-        counter.style.top = (lastFrame.offsetTop + lastFrame.offsetHeight - counter.offsetHeight) + 'px';
-      }
+    // Boundary AFTER this project: the midpoint between this project's
+    // last frame and the next project's first frame — both read live via
+    // getBoundingClientRect, which is already viewport-relative and
+    // updates correctly on every scroll with no manual tracking needed.
+    // Using the actual midpoint (instead of a guessed pixel offset) means
+    // there's no dead zone in between where neither counter is "active" —
+    // whatever the gap/margin between projects, the handoff always lines
+    // up, and it can never get stuck.
+    let afterBoundary = Infinity;
+    if (i < blockData.length - 1) {
+      const thisLastRect = lastFrame.getBoundingClientRect();
+      const nextFirstRect = blockData[i + 1].firstFrame.getBoundingClientRect();
+      afterBoundary = (thisLastRect.bottom + nextFirstRect.top) / 2;
     }
 
-    if (block.dataset.project === '02') {
-      if (rectFirst.top <= counterViewportY + appearOffset && rectLast.bottom > counterViewportY) {
-        counter.classList.add('active');
-        counter.style.position = 'fixed';
-        counter.style.top = '43%';
-      } else if (rectLast.bottom <= counterViewportY) {
-        counter.classList.add('slideup');
-        counter.style.position = 'absolute';
-        counter.style.top = (lastFrame.offsetTop + lastFrame.offsetHeight - counter.offsetHeight) + 'px';
-      }
+    // Boundary BEFORE this project is just the previous project's
+    // afterBoundary — they share the same handoff line.
+    let beforeBoundary = -Infinity;
+    if (i > 0) {
+      const prevLastRect = blockData[i - 1].lastFrame.getBoundingClientRect();
+      const thisFirstRect = data.firstFrame.getBoundingClientRect();
+      beforeBoundary = (prevLastRect.bottom + thisFirstRect.top) / 2;
     }
+
+    if (counterViewportY >= beforeBoundary && counterViewportY < afterBoundary) {
+      counter.classList.add('active');
+      counter.style.position = 'fixed';
+      counter.style.top = counterTopCss;
+    } else if (counterViewportY >= afterBoundary) {
+      // scrolled past this project — park its counter at the bottom of
+      // its own block instead of leaving it pinned in place
+      counter.classList.add('slideup');
+      counter.style.position = 'absolute';
+      counter.style.top = (lastFrame.offsetTop + lastFrame.offsetHeight - counter.offsetHeight) + 'px';
+    }
+    // else: haven't scrolled to this project yet — leave it with no
+    // class, matching its default (hidden) state
   });
 }
 
@@ -210,8 +257,8 @@ function onScroll() {
   if (!ticking) {
     ticking = true;
     requestAnimationFrame(() => {
-      updateOnScroll();
       updateCounters();
+      updateOnScroll();
       ticking = false;
     });
   }
@@ -222,13 +269,16 @@ window.addEventListener('resize', () => {
   clearTimeout(window._resizeTimer);
   window._resizeTimer = setTimeout(() => {
     ensureBlockHeights();
-    updateOnScroll();
+    computeCounterAnchor();
     updateCounters();
+    updateOnScroll();
   }, 120);
 });
 
 // initial run
 ensureBlockHeights();
+computeCounterAnchor();
 initPreview();
-updateOnScroll();
 updateCounters();
+updateOnScroll();
+

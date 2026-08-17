@@ -297,9 +297,22 @@ button[type="submit"] {
   .contact-form input,
   .contact-form textarea { font-size: 0.98rem; padding: 0.55rem 0; }
 
-  /* Social + location */
-  .social-links { gap: 2rem; bottom: 0.6rem; }
-  .location-widget { left: 3%; bottom: 0.6rem; font-size: 0.9rem; gap: 10px; }
+  /* Social + location: base styles keep social-links centered
+     (left:50%) and location-widget at left:3% — at tablet widths the
+     centered social block is wide enough that its left edge creeps
+     back into the space the location widget occupies, causing overlap.
+     Anchoring them to opposite corners instead means they physically
+     cannot collide regardless of how many links or how long the
+     location text is. */
+  .social-links {
+    left: auto;
+    right: 3%;
+    transform: none;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    bottom: 0.6rem;
+  }
+  .location-widget { left: 3%; bottom: 0.8rem; font-size: 0.9rem; gap: 10px; }
 
   /* Reduce large paddings */
   #contact { padding: 3rem 0; }
@@ -322,7 +335,7 @@ button[type="submit"] {
   /* Intro: scale and center */
   .contact-intro {
     max-width: 100%;
-    margin-top: 1rem;
+    margin-top: 4rem;
     text-align: center;
   }
   .contact-intro h2 {
@@ -339,7 +352,7 @@ button[type="submit"] {
   /* Form becomes full width and touch friendly */
   .contact-form-container {
     max-width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     width: 100%;
   }
   .contact-form {

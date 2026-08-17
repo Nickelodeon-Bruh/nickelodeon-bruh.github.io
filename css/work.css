@@ -1,4 +1,3 @@
-/* Base */
 html, body {
   height: 100%;
   margin: 0;
@@ -10,12 +9,11 @@ html, body {
   user-select: none;
 }
 
-a { 
-  color: inherit; 
-  text-decoration: none; 
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Logo + top nav */
 #logo {
   position: fixed;
   top: 1rem;
@@ -39,7 +37,6 @@ a {
 }
 #navBar a.active, #navBar a:hover { opacity: 1; }
 
-/* Layout: left column (scroll) + fixed right preview */
 #workShowcase {
   display: flex;
   min-height: 100vh;
@@ -47,7 +44,6 @@ a {
   position: relative;
 }
 
-/* Left column */
 .left-column {
   flex: 0 0 600px;
   position: relative;
@@ -56,25 +52,23 @@ a {
   overflow: visible;
 }
 
-/* Each project block grows to contain its frames */
 .project-block {
   position: relative;
   padding-left: 40px;
-  margin-bottom: 120px; 
+  margin-bottom: 120px;
 }
 
-/* Counter mask + digit animation */
 .project-counter {
   position: fixed;
   top: 43%;
   left: 40px;
   font-size: 3.5rem;
   font-weight: 900;
-  overflow: hidden;   
-  height: 3.8rem;   
+  overflow: hidden;
+  height: 3.8rem;
   z-index: 5;
-  opacity: 1;         
-  transition: none;  
+  opacity: 1;
+  transition: none;
 }
 
 .project-counter span {
@@ -83,24 +77,20 @@ a {
   transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* active state: digits slide into view */
 .project-counter.active span {
   transform: translateY(0);
 }
 
-/* slide out upwards */
 .project-counter.slideup span {
   transform: translateY(-100%);
 }
 
-/* stagger digits */
 .project-counter span:nth-child(1) { transition-delay: 0s; }
 .project-counter span:nth-child(2) { transition-delay: 0.3s; }
 
-/* Frames column */
 .project-previews {
   margin-left: 280px;
-  margin-top: 370px;      
+  margin-top: 370px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -122,14 +112,13 @@ a {
 }
 
 .frame {
-  scroll-margin-top: 420px; 
+  scroll-margin-top: 420px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Center nav */
 .center-nav {
   position: fixed;
   top: 48%;
@@ -153,30 +142,28 @@ html {
 
 .center-nav .project-nav li {
   position: relative;
-  padding-left: 1.5rem; 
+  padding-left: 1.5rem;
 }
 
 .nav-arrow {
   position: absolute;
   top: 0;
-  left: -10px;   
+  left: -10px;
   font-size: 24px;
   font-weight: bold;
   color: #242424;
-  transition: top 0.3s ease; 
+  transition: top 0.3s ease;
   opacity: 0;
 }
 
 .nav-arrow.visible {
-  opacity: 1; /* fade in when intro done */
-}
+  opacity: 1; }
 
 .center-nav .project-nav li {
   position: relative;
   padding-left: 1.5rem;
 }
 
-/* Right column: big preview (fixed bottom-right) */
 .right-column {
   position: fixed;
   bottom: 0;
@@ -190,14 +177,13 @@ html {
   z-index: 10;
 }
 
-/* Big preview container */
 .big-preview {
   position: relative;
   width: 680px;
   height: 450px;
   border-radius: 12px;
   overflow: hidden;
-  background: #000; 
+  background: #000;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 .big-preview video {
@@ -217,14 +203,12 @@ html {
 .frame video {
   padding: 5px;
   border-radius: 12px;
-  width: 100%;       
-  height: 100%;      
-  object-fit: cover;  
-  display: block;    
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-
-/* Description fixed bottom center */
 .project-description {
   position: fixed;
   width: 18rem;
@@ -239,7 +223,6 @@ html {
   z-index: 12;
 }
 
-/* Transition boxes */
 #blackBoxRight {
   position: fixed;
   top: 0;
@@ -300,71 +283,91 @@ html {
   display: block;
 }
 
-@media (max-width: 1920px) and (max-height: 1080px) {
-  
-}
+@media (max-width: 1366px) and (min-width: 761px) {
+    .left-column { flex: 0 0 380px; padding-top: 30px; padding-bottom: 23vh; }
+  .project-block { padding-left: 32px; margin-bottom: 90px; }
+  .project-previews { margin-left: 150px; margin-top: 420px; gap: 14px; }
+  .project-previews .frame { width: 240px; height: 190px; border-radius: 8px; }
 
-@media (max-width: 1100px) and (min-width: 761px) {
-  /* layout */
-  .left-column { flex: 0 0 420px; padding-top: 32px; padding-bottom: 100px; }
-  .project-previews { margin-left: 220px; margin-top: 260px; gap: 16px; }
-  .project-previews .frame { width: 240px; height: 170px; border-radius: 8px; }
-
-  /* counter */
-  .project-counter {
-    left: 28px;
-    top: 40%;
-    font-size: 3rem;
-    height: 3.2rem;
+    .project-counter {
+    left: 24px;
+    top: 38%;
+    font-size: 2.6rem;
+    height: 2.9rem;
   }
   .project-counter span { transition-duration: 0.9s; }
 
-  /* center nav */
-  .center-nav { top: 48%; left: 42%; }
-  .center-nav .project-nav li { font-size: 1.05rem; }
+    .center-nav { top: 46%; left: 70%; }
+  .center-nav .project-nav li { font-size: 1rem; }
 
-  /* right column (smaller preview) */
-  .right-column { padding: 28px; }
-  .big-preview { width: 520px; height: 320px; border-radius: 10px; }
-  .big-preview video { transition: opacity .35s ease; }
+    .right-column { padding: 20px; }
+  .big-preview {
+    display: none;
+  }
+  .big-preview video { transition: opacity .3s ease; }
 
-  /* description */
-  .project-description { width: 16rem; bottom: 44px; font-size: 0.95rem; }
+    .project-description { width: 14rem; bottom: 10%; left: 74%; font-size: 1rem; }
 }
 
-@media (max-width: 760px) {
-  /* overall layout: stack and simplify */
-  #workShowcase { display: block; min-height: auto; }
-  .left-column {
-    flex: 1 1 auto;
-    width: 100%;
-    padding: 18px 16px 120px;
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .right-column {
+    padding: 24px;
+    display: flex;
+    --preview-w: clamp(260px, calc(100vw - 510px), 600px);
   }
 
-  /* hide right column entirely on mobile */
-  .right-column { display: none !important; }
-
-  /* project previews become a horizontal scroller */
   .project-previews {
-    margin-left: 0;
-    margin-top: 12px;
+    margin-top: 35rem;
+    padding-bottom: 18vh;
+  }
+
+  .big-preview {
+    display: block;
+    width: calc(var(--preview-w) * 0.90);
+    height: calc(var(--preview-w) * 0.65);
+    border-radius: 10px;
+  }
+  .big-preview video { transition: opacity .3s ease; }
+}
+
+.project-description {
+    bottom: auto;
+    top: calc(50% + 40px);
+    left: 71%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+@media (max-width: 760px) {
+    #workShowcase { display: block; min-height: auto; }
+  .left-column {
+    width: 100%;
+    padding-top: 26vh;
+    padding-bottom: 60vh;
+  }
+
+    .right-column {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    height: auto;
+    padding: 0;
+    display: block;
+  }
+  .big-preview { display: none !important; }
+
+    .project-previews {
+    margin-left: 70px;
+    margin-top: 170px;
     display: flex;
-    flex-direction: row;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    gap: 14px;
   }
   .project-previews .frame {
-    flex: 0 0 72vw;        
-    max-width: 320px;
-    height: calc(72vw * 0.66); 
-    width: auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    background: #111;
-    transform: none;       
-    transition: none;
+    width: 150px;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
   .project-previews .frame video {
     width: 100%;
@@ -372,71 +375,42 @@ html {
     object-fit: cover;
   }
 
-  /* project counter becomes inline/static above previews */
-  .project-counter {
-    position: relative;
-    left: auto;
-    top: auto;
-    display: block;
-    margin: 0 0 8px 8px;
-    font-size: 2.4rem;
-    height: auto;
-    overflow: visible;
+    .project-counter {
+    left: 16px;
+    top: 26vh;
+    font-size: 2rem;
+    height: 2.2rem;
   }
-  .project-counter span { transform: none; transition: none; }
 
-  /* center nav reposition to flow with content */
-  .center-nav {
-    position: relative;
-    top: auto;
+    .center-nav {
     left: auto;
-    transform: none;
-    margin: 18px 0;
+    right: 16px;
+    top: 47%;
+    transform: translateY(-50%);
     text-align: left;
   }
-  .center-nav .project-nav li {
-    display: inline-block;
-    margin-right: 12px;
-    font-size: 1rem;
-    opacity: 1;
-    padding-left: 0;
-  }
-  .nav-arrow { display: none; } 
+  .center-nav .project-nav li { font-size: 0.95rem; }
+  .nav-arrow { font-size: 16px; left: -14px; }
 
-  /* description becomes full width and pinned below previews */
-  .project-description {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
+    .project-description {
+    position: fixed;
+    top: calc(47% + 46px);
+    right: 16px;
+    left: auto;
     bottom: auto;
-    left: auto;
+    width: max-content;
+    max-width: 55vw;
+    height: auto;
     transform: none;
-    margin: 12px 0 28px;
     text-align: left;
-    font-size: 1rem;
+    font-size: 0.85rem;
     z-index: 5;
+    margin: 0;
   }
 
-  /* disable transitions/animations globally for mobile to avoid overlap */
-  .project-previews .frame,
-  .project-counter span,
-  .center-nav .project-nav li,
-  .project-description,
-  #navBar,
-  #logo {
-    transition: none !important;
-    transform: none !important;
-  }
-
-  /* logo + nav sizing for touch targets */
-  #logo { width: 9vw; top: 0.6rem; left: 0.6rem; }
+    #logo { width: 9vw; top: 0.6rem; left: 0.6rem; }
   #navBar { top: 0.6rem; right: 0.6rem; }
   #navBar a { font-size: 4.2vw; }
 
-  /* accessibility: increase tap area for frames */
-  .project-previews .frame { padding: 6px; box-sizing: border-box; }
-
-  /* ensure smooth horizontal scroll but no vertical overflow */
-  html, body { overflow-x: hidden; }
+    html, body { overflow-x: hidden; }
 }
