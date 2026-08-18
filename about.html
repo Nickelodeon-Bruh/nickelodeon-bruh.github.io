@@ -5,8 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nikhil Bhawan - About</title>
   <link rel="icon" type="image/x-icon" href="/img/favicon-96x96.png">
+  <link rel="icon" href="/img/favicon.png" sizes="32x32" />
   <link rel="stylesheet" href="/css/about.css">
   <link rel="stylesheet" href="/css/main.css">
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="Nikhil Bhawan - About" />
+  <meta property="og:description" content="Learn more about Nikhil Bhawan, a software engineering student who loves building interactive web experiences." />
+  <meta property="og:image" content="https://nickelodeon-bruh.github.io/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://nickelodeon-bruh.github.io/about.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nikhil Bhawan - About" />
+  <meta name="twitter:description" content="Learn more about Nikhil Bhawan, a software engineering student who loves building interactive web experiences." />
+  <meta name="twitter:image" content="https://nickelodeon-bruh.github.io/img/og-image.png" />
+  <meta name="twitter:image:width" content="1200" />
+  <meta name="twitter:image:height" content="630" />
 </head>
 <body>
   
@@ -27,7 +44,7 @@
   </nav>
 
   <!-- Horizontal About section -->
-  <section id="AboutMe">
+  <section id="AboutMe" data-scrollbar-bg="light">
 
     <video autoplay muted loop playsinline id="bgVideo">
         <source src="/videos/tree-background-about.webm" type="video/mp4">
@@ -73,7 +90,7 @@
   <a id="scrollIndicator" href="#hobbies">↓ Please Scroll</a>
 
     <!-- Hobbies section -->
-  <section id="hobbies">
+  <section id="hobbies" data-scrollbar-bg="dark">
     <div class="hobbies-bg"></div>
     <div class="hobby-row">
       <!-- Gaming slideshow (left) -->
@@ -138,7 +155,7 @@
 
 
         <!-- Goals section -->
-    <section id="goals">
+    <section id="goals" data-scrollbar-bg="light">
       <div id="goalsContainer" class="about-block">
         <h1 class="reveal"><span>Goals</span></h1>
         <p class="reveal"><span>My short-term goal is to strengthen my skills in modern web frameworks</span></p>
@@ -176,5 +193,6 @@
   <div id="blackBoxFill"></div>
 
   <script src="/js/about.js"></script>
+  <script src="/js/scrollbar.js"></script>
 </body>
 </html>

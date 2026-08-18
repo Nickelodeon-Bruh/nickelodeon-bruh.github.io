@@ -164,3 +164,49 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+#customScrollbarThumb {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 0%;
+  background: #fff;
+  mix-blend-mode: difference;
+  z-index: 500;
+  pointer-events: none;
+}
+
+#customScrollbarGlow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 0%;
+  background: transparent;
+  z-index: 499;
+  pointer-events: none;
+  transition: box-shadow 0.25s ease;
+}
+#customScrollbarGlow.bg-light {
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.35);
+}
+#customScrollbarGlow.bg-dark {
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.55);
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 760px) {
+  #customScrollbarThumb {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 0%;
+    height: 8px;
+    mix-blend-mode: normal;
+    background: #33363D;
+  }
+  #customScrollbarGlow {
+    display: none !important;
+  }
+}

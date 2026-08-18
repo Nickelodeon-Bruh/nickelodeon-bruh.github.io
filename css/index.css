@@ -293,6 +293,20 @@ body, html {
   z-index: 15;           /* render above #BlackBox */
   pointer-events: none;  /* purely decorative — let clicks pass through to the page */
   background: transparent;
+  /* The renderer starts drawing immediately on script load, well before
+     runSequence() begins — without this, the canvas's opaque clear color
+     (matched to #BlackBox's own background) sits fully visible from
+     frame 1, completely hiding #BlackBox's slide-in transform underneath
+     it (the canvas is a higher z-index). Gating opacity here, toggled by
+     the same .pop timing as #BlackBox, means the whole box + flower
+     reveal actually becomes visible together instead of the canvas
+     pre-empting it. */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#heroCanvas.pop {
+  opacity: 1;
 }
 
 #blackToWhite stop {

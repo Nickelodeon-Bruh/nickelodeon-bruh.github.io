@@ -59,6 +59,7 @@ function runSequence() {
       setTimeout(() => {
         whiteBox.classList.add("expand2");
         BlackBox.classList.add("pop");
+        if (heroCanvas) heroCanvas.classList.add("pop"); // reveal canvas in sync with BlackBox — see css/index.css for why this has to be gated, not just the flower content inside it
         homepage.style.opacity = "1";   // show homepage
         logo.classList.add("pop");      // reveal corner logo
         revealActive = true;             // start the hero flower's scale-down reveal
@@ -129,6 +130,21 @@ const { w: heroW0, h: heroH0 } = getCanvasSize();
 const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.setSize(heroW0, heroH0, false);
+
+// UnrealBloomPass's blend step uses additive blending in its own composite
+// shader, which alters/corrupts whatever alpha was already in the buffer
+// wherever it draws — it isn't reliably "1.0 everywhere," but it's not
+// preserved either, so real transparency behind the bloom glow isn't
+// achievable if UnrealBloomPass writes directly into the main composer
+// chain. The clearColor-matching trick below was the workaround for that.
+//
+// To get TRUE transparency (the actual #BlackBox showing through instead
+// of a matched-color canvas sitting on top of it), bloom is rendered into
+// its own separate offscreen composer instead — we only ever read its RGB
+// (the glow itself) and explicitly discard its alpha, recombining it with
+// the base scene's own clean alpha (0 in empty space, 1 on the flower) in
+// a small custom blend shader below.
+renderer.setClearColor(0x000000, 0);
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, heroW0 / heroH0, 0.1, 100);
@@ -205,7 +221,17 @@ function updateResponsiveFit() {
 
 const composer = new EffectComposer(renderer);
 const renderPass = new RenderPass(scene, camera);
+renderPass.clearAlpha = 0; // keep the base render's background truly transparent (alpha 0), not just color-matched
 composer.addPass(renderPass);
+
+// Bloom is rendered into its OWN composer/offscreen target instead of
+// straight into the main chain — this is what lets us recover clean
+// alpha afterward, since we only ever pull its RGB (the glow) out of it
+// below and never touch its alpha.
+const bloomComposer = new EffectComposer(renderer);
+const bloomRenderPass = new RenderPass(scene, camera);
+bloomRenderPass.clearAlpha = 0;
+bloomComposer.addPass(bloomRenderPass);
 
 const bloomPass = new UnrealBloomPass(
   new THREE.Vector2(heroW0, heroH0),
@@ -213,7 +239,40 @@ const bloomPass = new UnrealBloomPass(
   0.1,
   0.10
 );
-composer.addPass(bloomPass);
+bloomComposer.addPass(bloomPass);
+
+// Recombine: bloomComposer's output already contains the base scene's
+// color WITH the glow additively blended in (that's how UnrealBloomPass's
+// own internal blend step works) — so this does NOT re-add the base
+// color a second time, it just grafts the base scene's clean alpha (0 in
+// empty space, 1 on the flower) onto that combined color, discarding the
+// bloom composer's own corrupted alpha entirely.
+const BloomBlendShader = {
+  uniforms: {
+    tDiffuse: { value: null }, // base scene render — only its ALPHA is used
+    tBloom: { value: null },   // base+bloom combined (from bloomComposer) — its RGB is used
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform sampler2D tBloom;
+    varying vec2 vUv;
+    void main() {
+      float baseAlpha = texture2D(tDiffuse, vUv).a;
+      vec3 combined = texture2D(tBloom, vUv).rgb;
+      gl_FragColor = vec4(combined, baseAlpha);
+    }
+  `
+};
+const bloomBlendPass = new ShaderPass(BloomBlendShader);
+bloomBlendPass.uniforms.tBloom.value = bloomComposer.readBuffer.texture;
+composer.addPass(bloomBlendPass);
 
 const CellOverlayShader = {
   uniforms: {
@@ -603,6 +662,7 @@ function animateHero() {
   prevMouseX = mouseX;
   prevMouseY = mouseY;
 
+  bloomComposer.render(); // must render before composer, since bloomBlendPass reads its output as tBloom
   composer.render();
 }
 animateHero();
@@ -611,6 +671,7 @@ window.addEventListener('resize', () => {
   const { w, h } = getCanvasSize();
   renderer.setSize(w, h, false);
   composer.setSize(w, h);
+  bloomComposer.setSize(w, h);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   cellPass.uniforms.resolution.value.set(w, h);
