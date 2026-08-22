@@ -135,10 +135,13 @@ html {
   margin: 10px 0;
   cursor: pointer;
   opacity: 0.45;
-  transition: opacity .18s ease;
+  transition: opacity .18s ease, transform .18s ease, color .18s ease;
 }
 
-.center-nav .project-nav li.active { opacity: 1; }
+.center-nav .project-nav li.active {
+  opacity: 1;
+  transform: translateX(3px);
+}
 
 .center-nav .project-nav li {
   position: relative;
@@ -221,6 +224,11 @@ html {
   font-size: 1rem;
   opacity: 0.85;
   z-index: 12;
+  transition: opacity 0.25s ease;
+}
+
+.project-description.fading {
+  opacity: 0;
 }
 
 #blackBoxRight {
@@ -328,22 +336,22 @@ html {
     border-radius: 10px;
   }
   .big-preview video { transition: opacity .3s ease; }
-}
 
-.project-description {
+  .project-description {
     bottom: auto;
     top: calc(50% + 40px);
     left: 71%;
     transform: translateX(-50%);
     text-align: center;
   }
+}
 
 @media (max-width: 760px) {
     #workShowcase { display: block; min-height: auto; }
   .left-column {
     width: 100%;
     padding-top: 26vh;
-    padding-bottom: 60vh;
+    padding-bottom: 14vh;
   }
 
     .right-column {
@@ -357,15 +365,15 @@ html {
   .big-preview { display: none !important; }
 
     .project-previews {
-    margin-left: 70px;
+    margin-left: 38px;
     margin-top: 170px;
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
   .project-previews .frame {
-    width: 150px;
-    height: 100px;
+    width: 175px;
+    height: 117px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
@@ -375,35 +383,38 @@ html {
     object-fit: cover;
   }
 
+    .project-block {
+    padding-left: 12px;
+  }
+
     .project-counter {
-    left: 16px;
-    top: 26vh;
-    font-size: 2rem;
-    height: 2.2rem;
+    display: none;
   }
 
     .center-nav {
     left: auto;
     right: 16px;
-    top: 47%;
+    top: 48%;
     transform: translateY(-50%);
     text-align: left;
+    max-width: calc(100vw - 225px - 24px);
   }
   .center-nav .project-nav li { font-size: 0.95rem; }
   .nav-arrow { font-size: 16px; left: -14px; }
 
     .project-description {
     position: fixed;
-    top: calc(47% + 46px);
-    right: 16px;
+    top: calc(48% + 43px);
+    right: 10px;
     left: auto;
     bottom: auto;
     width: max-content;
-    max-width: 55vw;
+    max-width: calc(100vw - 225px - 24px);
     height: auto;
     transform: none;
     text-align: left;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
+    line-height: 1.35;
     z-index: 5;
     margin: 0;
   }
@@ -413,4 +424,34 @@ html {
   #navBar a { font-size: 4.2vw; }
 
     html, body { overflow-x: hidden; }
+}
+
+@media (max-width: 380px) {
+  .project-previews {
+    margin-left: 20px;
+  }
+  .project-previews .frame {
+    width: 130px;
+    height: 87px;
+  }
+
+  .project-block {
+    padding-left: 8px;
+  }
+
+  .center-nav {
+    right: 10px;
+    max-width: calc(100vw - 158px - 18px);
+  }
+  .center-nav .project-nav li { font-size: 0.82rem; }
+  .nav-arrow { font-size: 14px; left: -12px; }
+
+  .project-description {
+    right: 6px;
+    max-width: calc(100vw - 158px - 14px);
+    font-size: 0.62rem;
+  }
+
+  #logo { width: 10vw; }
+  #navBar a { font-size: 4.6vw; }
 }
