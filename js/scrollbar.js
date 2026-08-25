@@ -39,8 +39,8 @@
     }
 
     var scrollableHeight = 0;
-    var target = 0;   // real scroll percentage, 0-100
-    var current = 0;  // displayed (eased) percentage, chases target
+    var target = 0;  
+    var current = 0;  
 
     function recalc() {
       scrollableHeight = doc.scrollHeight - window.innerHeight;
@@ -54,7 +54,11 @@
       target = Math.min(100, Math.max(0, pct));
     }
 
+    var rafId = null;
+
+   
     function frame() {
+      rafId = null;
       if (scrollableHeight > 4) {
         var diff = target - current;
         if (Math.abs(diff) < 0.05) {
@@ -62,7 +66,7 @@
         } else {
           current += diff * 0.15;
         }
-      
+
         if (window.innerWidth <= 760) {
           thumb.style.width = current + '%';
           thumb.style.height = '';
@@ -74,8 +78,15 @@
           glow.style.height = current + '%';
           glow.style.width = '';
         }
+
+        if (current !== target) {
+          rafId = requestAnimationFrame(frame);
+        }
       }
-      requestAnimationFrame(frame);
+    }
+
+    function requestFrame() {
+      if (rafId === null) rafId = requestAnimationFrame(frame);
     }
 
     var resizeTimer;
@@ -85,27 +96,29 @@
         recalc();
         measureTarget();
         updateGlowMode();
+        requestFrame();
       }, 120);
     });
 
-    // Layout can shift after images/videos finish loading (this page has
-    // several), which changes doc.scrollHeight — recheck once that settles.
+   
     window.addEventListener('load', function () {
       recalc();
       measureTarget();
       updateGlowMode();
+      requestFrame();
     });
 
     window.addEventListener('scroll', function () {
       measureTarget();
       updateGlowMode();
+      requestFrame();
     }, { passive: true });
 
     recalc();
     measureTarget();
     updateGlowMode();
-    current = target; // start at the right fill immediately, no ease-in from 0
-    requestAnimationFrame(frame);
+    current = target;
+    requestFrame(); 
   }
 
   if (document.readyState === 'loading') {
