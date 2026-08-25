@@ -1,6 +1,6 @@
 import {
 	Vector2
-} from '/js/vendor/three-r181/three.module.js';
+} from '/js/vendor/three-r181/three-module.js';
 
 /**
  * @module FXAAShader

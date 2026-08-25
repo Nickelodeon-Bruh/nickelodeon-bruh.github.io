@@ -1,10 +1,10 @@
-import * as THREE from '/js/vendor/three-r181/three.module.js';
-import { SVGLoader } from '/js/vendor/three-r181/examples/jsm/loaders/SVGLoader.js';
-import { EffectComposer } from '/js/vendor/three-r181/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/ShaderPass.js';
-import { UnrealBloomPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { FXAAShader } from '/js/vendor/three-r181/examples/jsm/shaders/FXAAShader.js';
+import * as THREE from '/js/vendor/three-r181/three-module.js';
+import { SVGLoader } from '/js/vendor/three-r181/examples/jsm/loaders/svg-loader.js';
+import { EffectComposer } from '/js/vendor/three-r181/examples/jsm/postprocessing/effect-composer.js';
+import { RenderPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/render-pass.js';
+import { ShaderPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/shader-pass.js';
+import { UnrealBloomPass } from '/js/vendor/three-r181/examples/jsm/postprocessing/unreal-bloom-pass.js';
+import { FXAAShader } from '/js/vendor/three-r181/examples/jsm/shaders/fxaa-shader.js';
 
 // Element references
 const loader = document.getElementById("loader");

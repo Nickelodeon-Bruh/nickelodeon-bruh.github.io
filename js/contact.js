@@ -1,4 +1,3 @@
-// Intro / page UI and form logic first
 const blackBoxRight = document.getElementById("blackBoxRight");
 const whiteBoxRight = document.getElementById("whiteBoxRight");
 
@@ -118,8 +117,8 @@ updateWeather();
 setInterval(updateWeather, 400000);
 
 // petal-bg.js
-import * as THREE from '/js/vendor/three-r181/three.module.js';
-import { SVGLoader } from '/js/vendor/three-r181/examples/jsm/loaders/SVGLoader.js';
+import * as THREE from '/js/vendor/three-r181/three-module.js';
+import { SVGLoader } from '/js/vendor/three-r181/examples/jsm/loaders/svg-loader.js';
 
 (async function initPetalBackground() {
   try {
